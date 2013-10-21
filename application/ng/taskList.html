@@ -1,5 +1,4 @@
-
-		
+	
 <style>
 	table.collapsed
 	{
@@ -21,11 +20,16 @@
 		</tr>
 		<tbody>
 		<tr ng-repeat="task in tasks">
-			<td style="display:none;">{{task.ID}}</td>
-			<td>{{task.DESCRIPTION}}</td>
-			<td >{{task.DUE_DATE| date:'shortDate'}}</td>
-			<td>{{task.NOTE}}</td>
-			<td><a href="#/edit/{{task.ID}}"><i class='icon-edit'></i></a></td>
+			<td style="display:none;">{{task.TaskId}}</td>
+			<td>{{task.TaskTitle}}</td>
+			<td >{{task.DueDate| date:'shortDate'}}</td>
+			<td>{{task.Notes}}</td>
+			<td>
+			  <div class="pull-right">
+				<a href="#/edit/{{task.TaskId}}"><i class='icon-edit'></i></a>
+				<a ng-click="destroy(task)" ><i class="icon-trash icon-red"></i></a> 
+			  </div>
+			</td>
 		</tr>
 		</tbody>
 
