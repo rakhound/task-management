@@ -2,7 +2,7 @@ var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
 	$routeProvider.when('/', {templateUrl:"taskList.html", controller:"dashboardCtrl"})
-	$routeProvider.when('/new', {templateUrl:"new.html" , controller:"newTaskCtrl"})
+	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/edit/:id', {templateUrl:"new.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
 		
