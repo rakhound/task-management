@@ -2552,10 +2552,6 @@ body {
 
 nav#menu {
   background: #34495e; }
-  nav#menu i.icon {
-    font-family: "Flat-UI-Icons-16"; }
-    nav#menu i.icon:before {
-      content: "\e001"; }
   nav#menu #icon {
     max-width: 28px; }
 

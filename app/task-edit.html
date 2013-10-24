@@ -1,0 +1,49 @@
+<div class="content two-sidebars" >
+
+<h1 class="title">Edit task</h1>
+
+
+<form name="taskForm" class="form-horizontal">
+  
+  <div ng-class="{error: taskForm.desc.$invalid}">
+    <input type="text" placeholder="Task title" name="desc" id="desc" ng-model="task.TaskTitle" required>
+    <span ng-show="taskForm.desc.$error.required" class="help-inline">Required</span>
+  </div>
+
+  <div>
+    <input type="date" placeholder="Due Date" name="date" id="date" ng-model="task.DueDate">
+  </div>
+
+  <div>
+    <textarea placeholder="Write a little bit about the task you would like to complete." name="note" id="note" ng-model="task.Notes"></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button ng-click="save()" ng-disabled="taskForm.$invalid"><i class="icon-ok icon-white"></i> Save</button>
+  </div>
+  
+</form>
+
+</div>
+
+<aside class="sidebar" id="sidebar-first">
+    <div id="icon-title">
+        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
+        <h2>Your task</h2>
+    </div>
+    <div id="task-build">
+        <p><strong>Title:</strong> {{task.TaskTitle}}</p>
+        <p><strong>Notes:</strong> {{task.Notes}}</p>
+        <p><strong>Category:</strong> {{task.taskCat}}</p>
+        <p><strong>Priority:</strong> {{task.taskPriority}}</p>
+        <p><strong>Due Date:</strong> {{task.DueDate}}</p>
+        <p><strong>Progress:</strong> {{task.taskProgress}}</p>
+    </div>
+</aside>
+
+<aside class="sidebar" id="sidebar-second">
+    <div id="icon-title">
+        <img src="images/flat-ui/illustrations/calendar.png" id="icon"/>
+        <h2>Your calendar</h2>
+    </div>
+</aside>

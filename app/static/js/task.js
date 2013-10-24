@@ -3,7 +3,7 @@ TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
 	$routeProvider.when('/', {templateUrl:"taskList.html", controller:"dashboardCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
-	$routeProvider.when('/edit/:id', {templateUrl:"new.html" , controller:"editCtrl"})
+	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
 		
 })
