@@ -1,0 +1,7 @@
+<i ng-class="{'icon-chevron-down':!cat.isExpanded, 'icon-chevron-up':cat.isExpanded}" ng-show="cat.children.length>0" ng-click="toggle(cat)"></i>{{cat.cat.CategoryTitle}}
+<a ng-click="add(cat)" ><i class="icon-plus-sign"></i></a>
+
+<ul style="list-style: none;">
+	<input  type="text"  ng-model="newCat.CategoryTitle" ng-enter="save(cat)" ng-show="cat.isDelivering"><button ng-click="cancel(cat)" ng-show="cat.isDelivering">Cancel</button>
+	<li ng-repeat="cat in cat.children" ng-include="'categoryItem.html'" ng-show="cat.show"></li>
+</ul>

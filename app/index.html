@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+  <title>Task Manager</title>
+  <link type="text/css" rel="stylesheet" href="js/mmenu/mmenu.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  </head>
+
+  <body>
+
+    <div id="page">
+      <header id="header">
+        <div id="logo">
+          <img src="images/flat-ui/illustrations/clipboard.png" id="icon"/>
+          <h3>Task Manager</h3>
+        </div>
+      </header>
+
+      <section id="main">
+
+        <div ng-app="TaskManagement">
+          <ng-view></ng-view>	
+        </div> 
+
+      </section>
+
+      <nav id="menu">
+        <ul>
+          <li><a id="open-icon" href="#">MENU</a></li>
+          <li><a href="#"><i class="icon">icon</i>Dashboard</a></li>
+          <li><a href="#/tasks/create"><i class="icon">icon</i>Create new task</a></li>
+          <li><a href="#"><i class="icon">icon</i>Create new category</a></li>
+          <li><a href="#"><i class="icon">icon</i>About</a></li>
+          <li><a href="#"><i class="icon">icon</i>Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>  
+
+  <script src="static/js/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>
+    
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script type="text/javascript" src="js/mmenu/jquery.mmenu.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="static/js/task.js"></script>
+
+  </body>
+
+</html>
