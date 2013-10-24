@@ -135,7 +135,7 @@ editCtrl = function ($scope, $routeParams, $location, Task){
 
 var TaskMngApi = angular.module('TaskManagementApi', ['ngResource'])
 TaskMngApi.factory('Task', function($resource) {
-    var Task = $resource('http://localhost/task-manager/index.php/api/tasks/:method/:id', {}, {
+    var Task = $resource('http://localhost/task-management/index.php/api/tasks/:method/:id', {}, {
       query: {method:'GET', params: {method:'index'}, isArray:true },
       save: {method:'POST', params: {method:'save'} },
       get: {method:'GET', params: {method:'edit'} },
@@ -155,7 +155,7 @@ TaskMngApi.factory('Task', function($resource) {
 
 
 TaskMngApi.factory('Category', function($resource) {
-	var Category = $resource('http://localhost/task-manager/index.php/api/categories/:method/:id', {}, {
+	var Category = $resource('http://localhost/task-management/index.php/api/categories/:method/:id', {}, {
 	  query: {method:'GET', params: {method:'index'}, isArray:true },
 	  save: {method:'POST', params: {method:'save'} },
 	  get: {method:'GET', params: {method:'edit'} },
