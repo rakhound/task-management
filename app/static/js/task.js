@@ -80,14 +80,14 @@ categoryController = function($scope, Category) {
 		$scope.noMoreDelivery = false;
 	}
 	
-	$scope.save = function (cat)
+    $scope.save = function (cat)
 	{
 		Category.save($scope.newCat, function(data){
 			var obj = { cat:  { CategoryId: data.id,
-							   ParentId: $scope.newCat.CategoryId,
-							   CategoryTitle: $scope.newCat.CategoryTitle
-							  },
-					    children:[]};
+                               ParentId: $scope.newCat.CategoryId,
+                               CategoryTitle: $scope.newCat.CategoryTitle
+                              },
+                        children:[]};
 			cat.children.push(obj);
 			$scope.cancel(cat);
 			$scope.toggle(cat);
@@ -143,8 +143,8 @@ TaskMngApi.factory('Task', function($resource) {
     });
 
     Task.prototype.update = function(cb) {
-	    var rv = angular.extend({}, this, {TaskId:undefined});
-	    return Task.save({id: this.TaskId}, rv, cb);
+        var rv = angular.extend({}, this, {TaskId:undefined});
+        return Task.save({id: this.TaskId}, rv, cb);
     };
 	
 	Task.prototype.destroy = function(cb) {
@@ -156,19 +156,19 @@ TaskMngApi.factory('Task', function($resource) {
 
 TaskMngApi.factory('Category', function($resource) {
 	var Category = $resource('http://localhost/task-management/index.php/api/categories/:method/:id', {}, {
-	  query: {method:'GET', params: {method:'index'}, isArray:true },
-	  save: {method:'POST', params: {method:'save'} },
-	  get: {method:'GET', params: {method:'edit'} },
-	  remove: {method:'DELETE', params: {method:'remove'} }
+      query: {method:'GET', params: {method:'index'}, isArray:true },
+      save: {method:'POST', params: {method:'save'} },
+      get: {method:'GET', params: {method:'edit'} },
+      remove: {method:'DELETE', params: {method:'remove'} }
 	});
 
 	Category.prototype.update = function(cb) {
-	  return Category.save({id: this.CategoryId},
-		  angular.extend({}, this, {CategoryId:undefined}, cb))
+      return Category.save({id: this.CategoryId},
+          angular.extend({}, this, {CategoryId:undefined}, cb))
 	};
 
 	Category.prototype.destroy = function(cb) {
-	  return Category.remove({id: this.CategoryId}, cb);
+      return Category.remove({id: this.CategoryId}, cb);
 	};
 
 	return Category;
