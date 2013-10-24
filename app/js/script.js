@@ -7,3 +7,8 @@ $(function() {
 	});
 	$('nav#menu').mmenu();
 });
+
+// Date picker
+$(function() {
+	$("#date").datepicker();
+});

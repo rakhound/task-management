@@ -11,7 +11,7 @@
   </div>
 
   <div>
-    <input type="date" placeholder="Due Date" name="date" id="date" ng-model="task.DueDate">
+    <input type="text" placeholder="Due Date" name="date" id="date" ng-model="task.DueDate">
   </div>
 
   <div>
@@ -19,7 +19,7 @@
   </div>
 
   <div class="form-actions">
-    <button ng-click="save()" ng-disabled="taskForm.$invalid"><i class="icon-ok icon-white"></i> Save</button>
+    <button ng-click="save()" ng-disabled="taskForm.$invalid">Save</button>
   </div>
   
 </form>
