@@ -16,8 +16,8 @@
 
   <div>
       <label>Category<label>
-      <select ng-model="task.taskCat"> 
-          <option value="value">Value</option>
+      <select ng-model="task.taskCat" ng-controller="categoryController"> 
+          <option ng-repeat="cat in categories" ng-include="'categoryItem.html'" value="{{ cat }}" >{{ cat }}</option>
       </select>
       <ul  ng-controller="categoryController" style="list-style: none;">
       <li ng-repeat="cat in categories"  ng-include="'categoryItem.html'" ></li>
