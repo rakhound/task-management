@@ -74,6 +74,13 @@ categoryController = function($scope, Category) {
 		$scope.noMoreDelivery = true;
 	}
 
+	$scope.addToTask = function(category)
+	{
+		// Add category to task
+		alert(category.cat.CategoryTitle);
+
+	}
+
 	$scope.cancel= function(category)
 	{
 		category.isDelivering = false;
