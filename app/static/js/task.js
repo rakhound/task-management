@@ -1,14 +1,20 @@
 var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
-	$routeProvider.when('/', {templateUrl:"taskList.html", controller:"dashboardCtrl"})
+	$routeProvider.when('/', {templateUrl:"categories.html", controller:"categoryController"})
+	$routeProvider.when('/tasks', {templateUrl:"taskList.html", controller:"taskViewCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
+	$routeProvider.when('/categories/edit/:id', {templateUrl:"categories.html", controller:"categoryController"})
 		
 })
 
-dashboardCtrl = function($scope, $location, Task){
+dashboardCtrl = function($scope, Category) {
+	alert('hello');
+}
+
+taskViewCtrl = function($scope, $location, Task){
   $scope.tasks = Task.query();
   
   $scope.destroy = function(Task) {
@@ -74,11 +80,10 @@ categoryController = function($scope, Category) {
 		$scope.noMoreDelivery = true;
 	}
 
-	$scope.addToTask = function(category)
+	$scope.select = function(category)
 	{
-		// Add category to task
-		alert(category.cat.CategoryTitle);
-
+		// Add category to task form
+		$scope.task.TaskCat = category.cat.CategoryTitle;
 	}
 
 	$scope.cancel= function(category)
@@ -109,7 +114,8 @@ newTaskCtrl = function ($scope, Task, $location){
 	{
 		$scope.task.DueDate = new Date();
 		Task.save($scope.task, function (){
-			$location.path('/');
+			// Reditect after saving task
+			$location.path('/tasks');
 		});
 	}
 }

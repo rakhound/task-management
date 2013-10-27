@@ -1,3 +1,19 @@
+// Document ready
+$(document).ready(function(event) {
+	// Leah TODO: For some reason, items below will only load with this alert at the top??? Troubleshhot...
+	alert('');
+});
+
+// Focus styling for categories on task form
+$(function() {
+	$("input#category").focus(function() {
+		$('#category-select').addClass('focus').fadeIn();
+	});
+	$("input#category").focusout(function() {
+		$('#category-select').removeClass('focus');
+	});
+});
+
 // Mmenu configuration
 $(function() {
 	$('a#open-icon').click(function( e ) {
@@ -10,5 +26,7 @@ $(function() {
 
 // Date picker
 $(function() {
-	$("#date").datepicker();
+	$("input#date").datepicker();
 });
+
+
