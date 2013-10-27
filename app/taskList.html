@@ -15,6 +15,7 @@
 		<tr>
 			<td>Description</td>
 			<td>Date</td>
+			<td>Category</td>
 			<td>Notes</td>
 			<td><a href="#/new"><i class='icon-plus-sign'></i></a></td>
 		</tr>
@@ -23,6 +24,7 @@
 			<td style="display:none;">{{task.TaskId}}</td>
 			<td>{{task.TaskTitle}}</td>
 			<td >{{task.DueDate| date:'shortDate'}}</td>
+			<td>{{task.TaskCat}}</td>
 			<td>{{task.Notes}}</td>
 			<td>
 			  <div class="pull-right">
