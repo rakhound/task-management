@@ -1,6 +1,6 @@
 // Document ready
 $(document).ready(function(event) {
-	// Leah TODO: For some reason, items below will only load with this alert at the top??? Troubleshhot...
+	// Leah TODO: For some reason, items below will only load with this alert at the top??? Troubleshoot...
 	alert('');
 });
 
@@ -28,5 +28,3 @@ $(function() {
 $(function() {
 	$("input#date").datepicker();
 });
-
-
