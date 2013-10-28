@@ -1,8 +1,9 @@
-<!-- List level 1 -->
-<i ng-class="{'icon-chevron-down':!cat.isExpanded, 'icon-chevron-up':cat.isExpanded}" ng-show="cat.children.length>0" ng-click="toggle(cat)">expand</i>{{cat.cat.CategoryTitle}}
-<a ng-click="addToTask(cat)" ><i class="icon-plus-sign">Add to task</i></a>
+<div class="content">
 
-<!-- List level 2 -->
-<ul style="list-style: none;">
-	<li ng-repeat="cat in cat.children" ng-include="'task-add-category.html'" ng-show="cat.show"></li>
+<h1 class="title">Your dashboard</h1>
+
+<ul ng-controller="categoryController">
+	<li ng-repeat="cat in categories" ng-include="'dashboardItem.html'"></li>
 </ul>
+
+</div>

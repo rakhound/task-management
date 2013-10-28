@@ -1,7 +1,7 @@
 var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
-	$routeProvider.when('/', {templateUrl:"categories.html", controller:"categoryController"})
+	$routeProvider.when('/', {templateUrl:"dashboard.html", controller:"categoryController"})
 	$routeProvider.when('/tasks', {templateUrl:"taskList.html", controller:"taskViewCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
@@ -84,6 +84,12 @@ categoryController = function($scope, Category) {
 	{
 		// Add category to task form
 		$scope.task.TaskCat = category.cat.CategoryTitle;
+	}
+
+	$scope.expand = function(category)
+	{
+		// Expand Category on dashboard. LEAH'S work in progress...
+		alert('hello');
 	}
 
 	$scope.cancel= function(category)

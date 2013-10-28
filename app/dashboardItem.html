@@ -1,0 +1,6 @@
+<a ng-click="expand(cat)">{{cat.cat.CategoryTitle}}</a>
+
+<ul>
+	<input type="text"  ng-model="newCat.CategoryTitle" ng-enter="save(cat)" ng-show="cat.isDelivering"><button ng-click="cancel(cat)" ng-show="cat.isDelivering">Cancel</button>
+	<li ng-repeat="cat in cat.children" ng-include="'dashboardItem.html'" ng-show="cat.show"></li>
+</ul>
