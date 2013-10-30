@@ -6,6 +6,7 @@ TaskManagementApp.config(function($routeProvider,$locationProvider)
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
+	$routeProvider.when('/categories/index/:id', {templateUrl:"categories.html", controller:"categoryController"})
 	$routeProvider.when('/categories/edit/:id', {templateUrl:"categories.html", controller:"categoryController"})
 		
 })
@@ -89,7 +90,7 @@ categoryController = function($scope, Category) {
 	$scope.expand = function(category)
 	{
 		// Expand Category on dashboard. LEAH'S work in progress...
-		alert('hello');
+		alert('CatId: '+category.cat.CategoryId+' - Redirect to page.');
 	}
 
 	$scope.cancel= function(category)
@@ -120,7 +121,7 @@ newTaskCtrl = function ($scope, Task, $location){
 	{
 		$scope.task.DueDate = new Date();
 		Task.save($scope.task, function (){
-			// Reditect after saving task
+			// Redirect after saving task
 			$location.path('/tasks');
 		});
 	}
