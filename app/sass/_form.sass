@@ -6,8 +6,8 @@ textarea
 	width: 100%
 
 form
-	.form-item label
-		text-transform: uppercase
+	.form-item
+		margin: 1em 0
 
 button
 
@@ -15,4 +15,13 @@ button
 	background: $clouds
 
 .focus
-	border: solid 3px $sunflower	
+	border: solid 3px $sunflower
+
+#task-dates
+	@include clearfix
+	#task-start-date, #task-due-date
+		@include span-columns(3 of 6)
+#task-time
+	@include clearfix
+	#task-budget-time, #task-spent-time
+		@include span-columns(3 of 6)

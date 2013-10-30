@@ -26,5 +26,6 @@ $(function() {
 
 // Date picker
 $(function() {
-	$("input#date").datepicker();
+	$("input#start_date").datepicker();
+	$("input#due_date").datepicker();
 });

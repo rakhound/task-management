@@ -5,21 +5,34 @@
 
 <form name="taskForm" id="taskForm">
   
-  <div ng-class="{error: taskForm.desc.$invalid}">
+  <div class="form-item" ng-class="{error: taskForm.desc.$invalid}">
     <input type="text" placeholder="Task title" name="title" id="" ng-model="task.TaskTitle" required>
     <span ng-show="taskForm.desc.$error.required" class="help-inline">Required</span>
   </div>
 
-  <div>
-    <input type="text" placeholder="Due Date" name="date" id="date" ng-model="task.DueDate">
+  <div class="form-item" id="task-dates">
+    <div id="task-start-date"><input type="date" placeholder="Start Date" name="start-date" id="start-date" ng-model="task.StartDate"></div>
+    <div id="task-due-date"><input type="date" placeholder="Due Date" name="due-date" id="due-date" ng-model="task.DueDate"></div>
   </div>
 
-  <div>
+  <div class="form-item">
     <input type="text" placeholder="Add a category from the right" name="category" id="category" ng-model="task.TaskCat">
   </div>
 
-  <div>
+  <div class="form-item" id="task-time">
+    <div id="task-budget-time"><input type="number" placeholder="Hours Estimated" name="budget-time" id="budget-time" ng-model="task.BudgetTime"></div>
+    <div id="task-spent-time"><input type="number" placeholder="Hours Invested" name="spent-time" id="spent-time" ng-model="task.SpentTime"></div>
+  </div>
+
+  <div class="form-item">
     <textarea placeholder="Write a little bit about the task you would like to complete." name="note" id="note" ng-model="task.Notes"></textarea>
+  </div>
+
+  <div class="form-item">
+    <label>Status</label><br />
+    <label><input type="radio" name="taskStatus" value="Open" ng-model="task.Status" />Open</label>
+    <label><input type="radio" name="taskStatus" value="Closed" ng-model="task.Status"/>Closed</label>
+    <label><input type="radio" name="taskStatus" value="Suspended" ng-model="task.Status" />Suspended</label>
   </div>
 
   <div class="form-actions">

@@ -3,23 +3,35 @@
 <h1 class="title">Edit task</h1>
 
 
-<form name="taskForm" class="form-horizontal">
+<form name="taskForm" id="taskForm">
   
-  <div ng-class="{error: taskForm.desc.$invalid}">
-    <input type="text" placeholder="Task title" name="desc" id="desc" ng-model="task.TaskTitle" required>
+  <div class="form-item" ng-class="{error: taskForm.desc.$invalid}">
+    <input type="text" placeholder="Task title" name="title" id="" ng-model="task.TaskTitle" required>
     <span ng-show="taskForm.desc.$error.required" class="help-inline">Required</span>
   </div>
 
-  <div>
-    <input type="date" placeholder="Due Date" name="date" id="date" ng-model="task.DueDate">
+  <div class="form-item" id="task-dates">
+    <div id="task-start-date"><input type="date" placeholder="Start Date" name="start-date" id="start-date" ng-model="task.StartDate"></div>
+    <div id="task-due-date"><input type="date" placeholder="Due Date" name="due-date" id="due-date" ng-model="task.DueDate"></div>
   </div>
 
-  <div>
+  <div class="form-item">
+    <input type="text" placeholder="Add a category from the right" name="category" id="category" ng-model="task.TaskCat">
+  </div>
+
+  <div class="form-item">
     <textarea placeholder="Write a little bit about the task you would like to complete." name="note" id="note" ng-model="task.Notes"></textarea>
   </div>
 
+  <div class="form-item">
+    <label>Status</label><br />
+    <label><input type="radio" name="taskStatus" value="Open" ng-model="task.Status" />Open</label>
+    <label><input type="radio" name="taskStatus" value="Closed" ng-model="task.Status"/>Closed</label>
+    <label><input type="radio" name="taskStatus" value="Suspended" ng-model="task.Status" />Suspended</label>
+  </div>
+
   <div class="form-actions">
-    <button ng-click="save()" ng-disabled="taskForm.$invalid"><i class="icon-ok icon-white"></i> Save</button>
+    <button ng-click="save()" ng-disabled="taskForm.$invalid">Save</button>
   </div>
   
 </form>
@@ -28,22 +40,27 @@
 
 <aside class="sidebar" id="sidebar-first">
     <div id="icon-title">
-        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
-        <h2>Your task</h2>
+        <img src="images/flat-ui/illustrations/bag.png" id="icon"/>
+        <h2>Task categories</h2>
     </div>
-    <div id="task-build">
-        <p><strong>Title:</strong> {{task.TaskTitle}}</p>
-        <p><strong>Notes:</strong> {{task.Notes}}</p>
-        <p><strong>Category:</strong> {{task.taskCat}}</p>
-        <p><strong>Priority:</strong> {{task.taskPriority}}</p>
-        <p><strong>Due Date:</strong> {{task.DueDate}}</p>
-        <p><strong>Progress:</strong> {{task.taskProgress}}</p>
+    <div class="sidebar-block" id="category-select">
+      <ul  ng-controller="categoryController">
+        <li ng-repeat="cat in categories" ng-include="'categorySelectAdd.html'"></li>
+      </ul>
     </div>
 </aside>
 
 <aside class="sidebar" id="sidebar-second">
     <div id="icon-title">
-        <img src="images/flat-ui/illustrations/calendar.png" id="icon"/>
-        <h2>Your calendar</h2>
+        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
+        <h2>Your new task</h2>
     </div>
+    <div class="sidebar-block" id="task-build">
+        <p><strong>Title:</strong> {{task.TaskTitle}}</p>
+        <p><strong>Notes:</strong> {{task.Notes}}</p>
+        <p><strong>Category:</strong> {{task.TaskCat}}</p>
+        <p><strong>Priority:</strong> {{task.taskPriority}}</p>
+        <p><strong>Due Date:</strong> {{task.DueDate}}</p>
+        <p><strong>Progress:</strong> {{task.taskProgress}}</p>
+    </div>    
 </aside>

@@ -2646,14 +2646,44 @@ input[type="email"], input[type="number"], input[type="password"], input[type="s
 textarea {
   width: 100%; }
 
-form .form-item label {
-  text-transform: uppercase; }
+form .form-item {
+  margin: 1em 0; }
 
 #ui-datepicker-div {
   background: #ecf0f1; }
 
 .focus {
   border: solid 3px #f1c40f; }
+
+#task-dates {
+  *zoom: 1; }
+  #task-dates:before, #task-dates:after {
+    display: table;
+    content: ""; }
+  #task-dates:after {
+    clear: both; }
+  #task-dates #task-start-date, #task-dates #task-due-date {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%; }
+    #task-dates #task-start-date:last-child, #task-dates #task-due-date:last-child {
+      margin-right: 0; }
+
+#task-time {
+  *zoom: 1; }
+  #task-time:before, #task-time:after {
+    display: table;
+    content: ""; }
+  #task-time:after {
+    clear: both; }
+  #task-time #task-budget-time, #task-time #task-spent-time {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%; }
+    #task-time #task-budget-time:last-child, #task-time #task-spent-time:last-child {
+      margin-right: 0; }
 
 #task-build p {
   border-bottom: dotted 1px #bdc3c7;
