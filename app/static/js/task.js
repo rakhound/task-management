@@ -8,21 +8,21 @@ TaskManagementApp.config(function($routeProvider,$locationProvider)
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
 	$routeProvider.when('/categories/index/:id', {templateUrl:"categories.html", controller:"categoryController"})
 	$routeProvider.when('/categories/edit/:id', {templateUrl:"categories.html", controller:"categoryController"})
-		
+
 })
 
 dashboardCtrl = function($scope, Category) {
 	alert('hello');
 }
 
-taskViewCtrl = function($scope, $location, Task){
-  $scope.tasks = Task.query();
-  
-  $scope.destroy = function(Task) {
-    Task.destroy(function() {
-      $scope.tasks.splice($scope.tasks.indexOf(Task), 1);
-    });
-  };
+taskViewCtrl = function($scope, $location, Task) {
+	$scope.tasks = Task.query();
+
+	$scope.destroy = function(Task) {
+		Task.destroy(function() {
+			$scope.tasks.splice($scope.tasks.indexOf(Task), 1);
+		});
+	};
 }
 
 categoryController = function($scope, Category) {
@@ -36,7 +36,7 @@ categoryController = function($scope, Category) {
 
 	$scope.toggle = function(cat)
 	{
-	    var count = cat.children.length;
+		var count = cat.children.length;
 		for(var  i= 0; i < count; i++)
 		{
 			if(cat.children[i].show === undefined)
@@ -99,14 +99,14 @@ categoryController = function($scope, Category) {
 		$scope.noMoreDelivery = false;
 	}
 	
-    $scope.save = function (cat)
+	$scope.save = function (cat)
 	{
 		Category.save($scope.newCat, function(data){
 			var obj = { cat:  { CategoryId: data.id,
-                               ParentId: $scope.newCat.CategoryId,
-                               CategoryTitle: $scope.newCat.CategoryTitle
-                              },
-                        children:[]};
+								ParentId: $scope.newCat.CategoryId,
+								CategoryTitle: $scope.newCat.CategoryTitle
+								},
+						children:[]};
 			cat.children.push(obj);
 			$scope.cancel(cat);
 			$scope.toggle(cat);
@@ -127,68 +127,69 @@ newTaskCtrl = function ($scope, Task, $location){
 	}
 }
 
-editCtrl = function ($scope, $routeParams, $location, Task){
+editCtrl = function ($scope, $routeParams, $location, Task) {
 
-  var self = this;
-  Task.get({id: $routeParams.id}, function(task) {
+	var self = this;
+	Task.get({id: $routeParams.id}, function(task) {
+		self.original = task;
+		$scope.task = new Task(self.original);
+	});
 
-    self.original = task;
-    $scope.task = new Task(self.original);
-  });
+	$scope.isClean = function() {
+		return angular.equals(self.original, $scope.task);
+	};
 
-  $scope.isClean = function() {
-    return angular.equals(self.original, $scope.task);
-  };
+	$scope.destroy = function() {
+		self.original.destroy(function() {
+			$location.path('/');
+		});
+	};
 
-  $scope.destroy = function() {
-    self.original.destroy(function() {
-		$location.path('/');
-    });
-};
+	$scope.save = function() {
+		$scope.task.update(function() {
+			$location.path('/');
+		});
+	};
 
-  $scope.save = function() {
-    $scope.task.update(function() {
-      $location.path('/');
-    });
-  };
 }
 
 var TaskMngApi = angular.module('TaskManagementApi', ['ngResource'])
 TaskMngApi.factory('Task', function($resource) {
-    var Task = $resource('http://localhost/task-management/index.php/api/tasks/:method/:id', {}, {
-      query: {method:'GET', params: {method:'index'}, isArray:true },
-      save: {method:'POST', params: {method:'save'} },
-      get: {method:'GET', params: {method:'edit'} },
-      remove: {method:'DELETE', params: {method:'remove'} }
-    });
+	var Task = $resource('http://localhost/task-management/index.php/api/tasks/:method/:id', {}, {
+		query: {method:'GET', params: {method:'index'}, isArray:true },
+		save: {method:'POST', params: {method:'save'} },
+		get: {method:'GET', params: {method:'edit'} },
+		remove: {method:'DELETE', params: {method:'remove'} }
+	});
 
-    Task.prototype.update = function(cb) {
-        var rv = angular.extend({}, this, {TaskId:undefined});
-        return Task.save({id: this.TaskId}, rv, cb);
-    };
+	Task.prototype.update = function(cb) {
+		var rv = angular.extend({}, this, {TaskId:undefined});
+		return Task.save({id: this.TaskId}, rv, cb);
+	};
 	
 	Task.prototype.destroy = function(cb) {
-      return Task.remove({id: this.TaskId}, cb);
-    };
-    return Task;
+		return Task.remove({id: this.TaskId}, cb);
+	};
+
+	return Task;
 });
 
 
 TaskMngApi.factory('Category', function($resource) {
 	var Category = $resource('http://localhost/task-management/index.php/api/categories/:method/:id', {}, {
-      query: {method:'GET', params: {method:'index'}, isArray:true },
-      save: {method:'POST', params: {method:'save'} },
-      get: {method:'GET', params: {method:'edit'} },
-      remove: {method:'DELETE', params: {method:'remove'} }
+		query: {method:'GET', params: {method:'index'}, isArray:true },
+		save: {method:'POST', params: {method:'save'} },
+		get: {method:'GET', params: {method:'edit'} },
+		remove: {method:'DELETE', params: {method:'remove'} }
 	});
 
 	Category.prototype.update = function(cb) {
-      return Category.save({id: this.CategoryId},
-          angular.extend({}, this, {CategoryId:undefined}, cb))
+		return Category.save({id: this.CategoryId},
+			angular.extend({}, this, {CategoryId:undefined}, cb))
 	};
 
 	Category.prototype.destroy = function(cb) {
-      return Category.remove({id: this.CategoryId}, cb);
+		return Category.remove({id: this.CategoryId}, cb);
 	};
 
 	return Category;
@@ -215,8 +216,8 @@ TaskManagementApp.directive('ngEnter', function() {
 
 function flatArrToNestedArr(flatArr, nestedArr)
 {
-   for(var i =0; i<flatArr.length; i++)
-   {
+	for(var i =0; i<flatArr.length; i++)
+	{
 		if(flatArr[i].ParentId == 0)
 		{
 			var obj = {cat: flatArr[i], children:[]}
@@ -226,7 +227,7 @@ function flatArrToNestedArr(flatArr, nestedArr)
 		{
 			addToParent(flatArr[i], nestedArr);
 		}
-   }
+	}
 }
 function addToParent(childCat , arr)
 {
