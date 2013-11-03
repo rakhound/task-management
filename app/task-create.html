@@ -65,8 +65,30 @@
         <p><strong>Start Date:</strong> {{task.StartDate}}</p>
         <p><strong>Due Date:</strong> {{task.DueDate}}</p>
         <p><strong>Category:</strong> {{task.TaskCat}}</p>
-        <p><strong>Hours Estimated:</strong> {{task.BudgetTime}}</p>
-        <p><strong>Hours Invested:</strong> {{task.SpentTime}}</p>
+        <div id="hours-group">
+          <strong>Hours:</strong>
+          <div id="hours-chart">
+
+          </div>
+          <table id="hours">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Estimated</th>
+                <td>{{task.BudgetTime}}</td>
+              </tr>
+              <tr>
+                <th>Invested</th>
+                <td>{{task.SpentTime}}</td>
+              </tr>
+            </tbody>
+          </table>  
+        </div>  
         <p><strong>Notes:</strong> {{task.Notes}}</p>
         <p><strong>Status:</strong> {{task.Status}}</p>
     </div>    
