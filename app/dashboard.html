@@ -1,9 +1,9 @@
-<div class="content">
+<div class="content" id="dashboard">
 
 <h1 class="title">Your dashboard</h1>
 
-<ul ng-controller="categoryController">
-	<li ng-repeat="cat in categories" ng-include="'dashboardItem.html'"></li>
+<ul id="category-circles">
+	<li class="category-circle" ng-repeat="cat in categories" ng-include="'dashboardItem.html'"></li>
 </ul>
 
 </div>

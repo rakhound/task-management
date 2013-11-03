@@ -17,8 +17,8 @@ class Categories extends REST_Controller {
 
 	public function index_get()
 	{
-		$tasks = $this->category_model->get_all();
-		$this->response($tasks);
+		$categories = $this->category_model->get_all();
+		$this->response($categories);
 	}
 
 	public function edit_get($id = NULL)
@@ -37,13 +37,13 @@ class Categories extends REST_Controller {
 		{
 			FB::info("Inside save_post, without id)");
 			$new_id = $this->category_model->add($this->post());
-			$this->response(array('status' => true, 'id' => $new_id, 'message' => sprintf('Task #%d has been created.', $new_id)), 200);
+			$this->response(array('status' => true, 'id' => $new_id, 'message' => sprintf('Category #%d has been created.', $new_id)), 200);
 		}
 		else
 		{
 			FB::info("Inside save_post, id)");
 			$this->category_model->update($id, $this->post());
-			$this->response(array('status' => true, 'message' => sprintf('Task #%d has been updated.', $id)), 200);
+			$this->response(array('status' => true, 'message' => sprintf('Category #%d has been updated.', $id)), 200);
 		}
 	}
 
@@ -51,11 +51,11 @@ class Categories extends REST_Controller {
 	{
 		if ($this->category_model->delete($id))
 		{
-			$this->response(array('status' => true, 'message' => sprintf('Task #%d has been deleted.', $id)), 200);
+			$this->response(array('status' => true, 'message' => sprintf('Category #%d has been deleted.', $id)), 200);
 		}
 		else
 		{
-			$this->response(array('status' => false, 'error_message' => 'This Task does not exist!'), 404);
+			$this->response(array('status' => false, 'error_message' => 'This Category does not exist!'), 404);
 		}
 	}
 

@@ -1,7 +1,7 @@
 // Document ready
 $(document).ready(function(event) {
 	// Leah TODO: For some reason, items below will only load with this alert at the top??? Troubleshoot...
-	alert('');
+	alert('temp alert for Jquery load');
 });
 
 // Focus styling for categories on task form
@@ -29,3 +29,23 @@ $(function() {
 	$("input#start_date").datepicker();
 	$("input#due_date").datepicker();
 });
+
+// Masonry
+$(function() {
+	var $container = $('#category-circles');
+	$container.masonry({
+	  itemSelector: '.category-circle'
+	});
+});
+
+//
+//$(function() {
+//	$('.category-circle').click(function() {
+//		$(this).css("width", "2000px").css({width: '2000px', height: '2000px'})
+//	});
+//});
+
+
+
+
+

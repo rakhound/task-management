@@ -4,7 +4,7 @@ require APPPATH.'/libraries/REST_Controller.php';
 /**
  * Projects API controller
  *
- * Validation is missign
+ * Validation is missing
  */
 class Tasks extends REST_Controller {
 
@@ -17,10 +17,7 @@ class Tasks extends REST_Controller {
 
 	public function index_get()
 	{
-		$tasks = $this->task_model->get_all();
-		
-		
-		//FB::info($tasks); 		
+		$tasks = $this->task_model->get_all();		
 		$this->response($tasks);
 	}
 
@@ -36,7 +33,6 @@ class Tasks extends REST_Controller {
 
 	public function save_post($id = NULL)
 	{
-		//FB::info("Inside save_post and id is: ");FB::info($id);
 		if ($id == NULL)
 		{
 			FB::info("Inside save_post, without id)");

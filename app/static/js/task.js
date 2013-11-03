@@ -6,7 +6,7 @@ TaskManagementApp.config(function($routeProvider,$locationProvider)
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
-	$routeProvider.when('/categories/index/:id', {templateUrl:"categories.html", controller:"categoryController"})
+	$routeProvider.when('/categories/index/:id', {templateUrl:"categories-id.html", controller:"categoryViewIdCtrl"})
 	$routeProvider.when('/categories/edit/:id', {templateUrl:"categories.html", controller:"categoryController"})
 
 })
@@ -16,6 +16,7 @@ dashboardCtrl = function($scope, Category) {
 }
 
 taskViewCtrl = function($scope, $location, Task) {
+
 	$scope.tasks = Task.query();
 
 	$scope.destroy = function(Task) {
@@ -23,6 +24,18 @@ taskViewCtrl = function($scope, $location, Task) {
 			$scope.tasks.splice($scope.tasks.indexOf(Task), 1);
 		});
 	};
+
+}
+
+categoryViewIdCtrl = function($scope, $routeParams, Category, Task) {
+
+	Category.get({id: $routeParams.id}, function(categories) {
+		$scope.categories = categories;
+	});
+
+	// TODO: only tasks with matching category name should be loaded
+	$scope.tasks = Task.query();
+
 }
 
 categoryController = function($scope, Category) {
@@ -90,7 +103,7 @@ categoryController = function($scope, Category) {
 	$scope.expand = function(category)
 	{
 		// Expand Category on dashboard. LEAH'S work in progress...
-		alert('CatId: '+category.cat.CategoryId+' - Redirect to page.');
+		//alert('CatId: '+category.cat.CategoryId+' - Redirect to page.');
 	}
 
 	$scope.cancel= function(category)
