@@ -2640,6 +2640,7 @@ html #open-icon {
   margin-top: -20px;
   background: #2c3e50 !important; }
 
+/* _form.sass */
 input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"] {
   width: 100%; }
 
@@ -2685,6 +2686,7 @@ form .form-item {
     #task-time #task-budget-time:last-child, #task-time #task-spent-time:last-child {
       margin-right: 0; }
 
+/* _tasks.sass */
 #task-build p {
   border-bottom: dotted 1px #bdc3c7;
   padding-bottom: 1em;
@@ -2699,6 +2701,103 @@ form .form-item {
     margin: 0;
     padding: 0;
     list-style: none; }
+
+/* _dashboard.sass */
+ul#category-circles {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  ul#category-circles li {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    float: left;
+    display: inline;
+    height: 0;
+    width: 23%;
+    padding-bottom: 23%;
+    margin: 1%;
+    border-radius: 50%;
+    background: #1abc9c; }
+    ul#category-circles li:hover {
+      background: #16a085;
+      margin: 0;
+      width: 25%;
+      padding-bottom: 25%; }
+    ul#category-circles li a {
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      -webkit-backface-visibility: hidden;
+      float: left;
+      width: 100%;
+      padding-top: 50%;
+      line-height: 1em;
+      margin-top: -0.5em;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1.5em; }
+      ul#category-circles li a:hover {
+        color: #ecf0f1;
+        font-size: 2em; }
+  ul#category-circles li:nth-child(2n) {
+    background: #e74c3c;
+    width: 8%;
+    padding-bottom: 8%; }
+    ul#category-circles li:nth-child(2n):hover {
+      background: #c0392b;
+      margin: 0;
+      width: 10%;
+      padding-bottom: 10%; }
+  ul#category-circles li:nth-child(3n) {
+    background: #3498db;
+    width: 28%;
+    padding-bottom: 28%; }
+    ul#category-circles li:nth-child(3n):hover {
+      background: #2980b9;
+      margin: 0;
+      width: 30%;
+      padding-bottom: 30%; }
+  ul#category-circles li:nth-child(4n) {
+    width: 18%;
+    padding-bottom: 18%;
+    background: #9b59b6; }
+    ul#category-circles li:nth-child(4n):hover {
+      background: #8e44ad;
+      margin: 0;
+      width: 20%;
+      padding-bottom: 20%; }
+  ul#category-circles li:nth-child(5n) {
+    width: 13%;
+    padding-bottom: 13%;
+    background: #e67e22; }
+    ul#category-circles li:nth-child(5n):hover {
+      background: #d35400;
+      margin: 0;
+      width: 15%;
+      padding-bottom: 15%; }
+  ul#category-circles li:nth-child(6n) {
+    width: 26%;
+    padding-bottom: 26%;
+    background: #2ecc71; }
+    ul#category-circles li:nth-child(6n):hover {
+      background: #27ae60;
+      margin: 0;
+      width: 28%;
+      padding-bottom: 28%; }
+  ul#category-circles li:nth-child(8n) {
+    background: #e74c3c;
+    width: 8%;
+    padding-bottom: 8%; }
+    ul#category-circles li:nth-child(8n):hover {
+      background: #c0392b;
+      margin: 0;
+      width: 10%;
+      padding-bottom: 10%; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
