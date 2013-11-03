@@ -19,6 +19,11 @@
     <input type="text" placeholder="Add a category from the right" name="category" id="category" ng-model="task.TaskCat">
   </div>
 
+  <div class="form-item" id="task-time">
+    <div id="task-budget-time"><input type="number" placeholder="Hours Estimated" name="budget-time" id="budget-time" ng-model="task.BudgetTime"></div>
+    <div id="task-spent-time"><input type="number" placeholder="Hours Invested" name="spent-time" id="spent-time" ng-model="task.SpentTime"></div>
+  </div>
+
   <div class="form-item">
     <textarea placeholder="Write a little bit about the task you would like to complete." name="note" id="note" ng-model="task.Notes"></textarea>
   </div>
@@ -60,8 +65,30 @@
         <p><strong>Start Date:</strong> {{task.StartDate}}</p>
         <p><strong>Due Date:</strong> {{task.DueDate}}</p>
         <p><strong>Category:</strong> {{task.TaskCat}}</p>
-        <p><strong>Hours Estimated:</strong> {{task.BudgetTime}}</p>
-        <p><strong>Hours Invested:</strong> {{task.SpentTime}}</p>
+        <div id="hours-group">
+          <strong>Hours:</strong>
+          <div id="hours-chart">
+
+          </div>
+          <table id="hours">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Estimated</th>
+                <td>{{task.BudgetTime}}</td>
+              </tr>
+              <tr>
+                <th>Invested</th>
+                <td>{{task.SpentTime}}</td>
+              </tr>
+            </tbody>
+          </table>  
+        </div>    
         <p><strong>Notes:</strong> {{task.Notes}}</p>
         <p><strong>Status:</strong> {{task.Status}}</p>
     </div>    

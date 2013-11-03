@@ -2694,6 +2694,12 @@ form .form-item {
   #task-build p strong {
     color: #34495e; }
 
+table#hours {
+  display: none; }
+
+#hours-group {
+  border-bottom: dotted 1px #bdc3c7; }
+
 #category-select ul {
   margin: 0;
   padding: 0; }

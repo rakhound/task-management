@@ -45,6 +45,59 @@ $(function() {
 //	});
 //});
 
+// Highcharts
+$(function () {
+
+	Highcharts.setOptions({
+    	colors: ['#e74c3c', '#c0392b']
+    });
+
+    $('#hours-chart').highcharts({
+        data: {
+            table: document.getElementById('hours')
+        },
+        title: {
+            text: ''
+        },
+        chart: {
+            backgroundColor: 'transparent',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            height: 200,
+        },    
+        credits: {
+      		enabled: false
+  		}, 
+  		navigation: {
+            buttonOptions: {
+                enabled: false
+            }
+        },
+        tooltip: {
+
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },  
+        series: [{
+            type: 'pie'
+        }]              
+    });
+
+});
+
+
+
 
 
 
