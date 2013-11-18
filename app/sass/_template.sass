@@ -45,25 +45,51 @@ header
 			@include span-columns(9)
 		&.two-sidebars
 			@include span-columns(6)
-				
+
+	#sidebar-group	
+		@include span-columns(6)
+		@include omega
+		width: 48.821340%					
+		#sidebar-first, #sidebar-second
+			@include span-columns(3 of 6)
+			@include omega
+			width: 50%
+		#sidebar-first
+			background-color: $nephritis	
 	.sidebar
 		@include span-columns(3)
 		@include omega
 		width: 24.410625%
-		height: 3000px
 		overflow: hidden
 		padding: 2em
 		//margin-right: 0
 		&#sidebar-first
-			background-color: $belize-hole
+			background-color: $peter-river
 		&#sidebar-second
-			background-color: $green-sea
+			background-color: $green-sea	
+		&#sidebar-span
+			@include span-columns(6 of 6)
+			background-color: $belize-hole
+
 			
 	.sidebar-block
 		background: $clouds
-		padding: 0.5em 1em
 		border-radius: 5px
 		margin-top: 1.5em			
+		.block-header
+			background-color: $silver
+			padding: 1em
+			border-radius: 5px 5px 0 0
+		.block-content
+			padding: 0.5em 1em
 
-
-
+	.content-block
+		background: $clouds
+		border-radius: 5px
+		margin-top: 1.5em			
+		.block-header
+			background-color: $silver
+			padding: 1em
+			border-radius: 5px 5px 0 0
+		.block-content
+			padding: 0.5em 1em
