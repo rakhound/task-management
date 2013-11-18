@@ -34,7 +34,8 @@ $(function() {
 $(function() {
 	var $container = $('#category-circles');
 	$container.masonry({
-	  itemSelector: '.category-circle'
+	  itemSelector: '.category-circle',
+	  columnWidth: 1,
 	});
 });
 

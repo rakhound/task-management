@@ -2,7 +2,7 @@ var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
 	$routeProvider.when('/', {templateUrl:"dashboard.html", controller:"categoryController"})
-	$routeProvider.when('/tasks', {templateUrl:"taskList.html", controller:"taskViewCtrl"})
+	$routeProvider.when('/tasks', {templateUrl:"task-list.html", controller:"taskViewCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
@@ -137,7 +137,12 @@ newTaskCtrl = function ($scope, Task, $location){
 			// Redirect after saving task
 			$location.path('/tasks');
 		});
+
+		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
 	}
+
+
+
 }
 
 editCtrl = function ($scope, $routeParams, $location, Task) {
@@ -146,6 +151,7 @@ editCtrl = function ($scope, $routeParams, $location, Task) {
 	Task.get({id: $routeParams.id}, function(task) {
 		self.original = task;
 		$scope.task = new Task(self.original);
+		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
 	});
 
 	$scope.isClean = function() {
@@ -257,3 +263,4 @@ function addToParent(childCat , arr)
 		}
 	}
 }
+

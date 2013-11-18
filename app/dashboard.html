@@ -1,9 +1,89 @@
-<div class="content" id="dashboard">
+<div class="content two-sidebars" id="dashboard" >
 
-<h1 class="title">Your dashboard</h1>
+	<div id="icon-title">
+        <img src="images/flat-ui/illustrations/retina.png" id="icon"/>
+        <h1 class="title">Your tasks</h1>
+    </div>
+    	<div class="content-block">
+	    	<div class="block-header">
+	    		<input type="text" ng-model="search" class="search-query" placeholder="Search..." name="search" id="search"><span class="fui-search-16"></span>
+	    		<label>Filter by:</label>
+	    		<select ng-model="sortTask">
+					<option value="TaskTitle">Task name</option>
+					<option value="DueDate">Due Date</option>
+					<option value="Status">Status</option>
+				</select>
+	    	</div>
+	    	<div class="block-content">
+				<table>
+					<thead>
+						<tr>
+							<td>Description</td>
+							<td>Start Date</td>
+							<td>Due Date</td>
+							<td>Category</td>
+							<td>Hours Estimated</td>
+							<td>Hours Invested</td>
+							<td>Notes</td>
+							<td>Status</td>
+							<td><a href="#/new"><i class='icon-plus-sign'></i></a></td>
+						</tr>
+					<tbody ng-controller="taskViewCtrl">
+						<tr ng-repeat="task in tasks | filter:search | orderBy:sortTask">
+							<td><a href="#/tasks/edit/{{task.TaskId}}"><span class="fui-new-16"></span></a>{{task.TaskTitle}}</td>
+							<td>{{task.StartDate| date:'shortDate'}}</td>
+							<td>{{task.DueDate| date:'shortDate'}}</td>
+							<td>{{task.TaskCat}}</td>
+							<td>{{task.BudgetTime}}</td>
+							<td>{{task.SpentTime}}</td>
+							<td>{{task.Notes}}</td>
+							<td>{{task.Status}}</td>
+							<td>
+							  <div class="pull-right">
+								<a href="#/edit/{{task.TaskId}}"><i class='icon-edit'></i></a>
+								<a ng-click="destroy(task)" ><i class="icon-trash icon-red"></i></a> 
+							  </div>
+							</td>
+						</tr>
+					</tbody>
 
-<ul id="category-circles">
-	<li class="category-circle" ng-repeat="cat in categories" ng-include="'dashboardItem.html'"></li>
-</ul>
+					</thead>
+				</table> 
+	    	</div>
+	    </div>	
 
 </div>
+
+<aside id="sidebar-group">
+
+	<aside class="sidebar" id="sidebar-first">
+	    <div id="icon-title">
+	        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
+	        <h2>Create new task</h2>
+	    </div>
+	    <div><a class="btn btn-block btn-lg btn-danger" href="/#/tasks/create">Let's get started!</a></div>
+	</aside>
+
+	<aside class="sidebar" id="sidebar-second">
+	    <div id="icon-title">
+	        <img src="images/flat-ui/illustrations/calendar.png" id="icon"/>
+	        <h2>Your calendar</h2>
+	    </div>
+	    <div class="sidebar-block">
+
+	    </div>
+	</aside>
+
+	<aside class="sidebar" id="sidebar-span">
+	    <div id="icon-title">
+	        <img src="images/flat-ui/illustrations/compass.png" id="icon"/>
+	        <h2>Your task categories</h2>
+	    </div>
+
+		<ul id="category-circles">
+			<li class="category-circle" ng-repeat="cat in categories" ng-include="'dashboardItem.html'"></li>
+		</ul>
+
+    </aside>
+
+</aside>
