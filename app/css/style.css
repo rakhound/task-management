@@ -2720,9 +2720,7 @@ header {
     #main .content-block .block-header {
       background-color: #bdc3c7;
       padding: 1em;
-      border-radius: 5px 5px 0 0; }
-    #main .content-block .block-content {
-      padding: 0.5em 1em; }
+      border-radius: 5px; }
 
 html .mm-opened .mm-page {
   margin-left: 50px; }
@@ -2807,6 +2805,98 @@ table#hours {
 #task-status label {
   margin-right: 1em; }
 
+#task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  #task-list li {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    *zoom: 1;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 1em 0;
+    padding: 1em;
+    background: white;
+    border-radius: 5px;
+    border: solid 3px #dce4ec; }
+    #task-list li:before, #task-list li:after {
+      display: table;
+      content: ""; }
+    #task-list li:after {
+      clear: both; }
+    #task-list li:hover {
+      border: solid 3px #1abc9c; }
+    #task-list li .task-list-first {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%; }
+      #task-list li .task-list-first:last-child {
+        margin-right: 0; }
+    #task-list li .task-list-second {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      border-right: solid 1px #bdc3c7;
+      border-left: solid 1px #bdc3c7;
+      padding-left: 1em; }
+      #task-list li .task-list-second:last-child {
+        margin-right: 0; }
+    #task-list li .task-list-last {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%; }
+      #task-list li .task-list-last:last-child {
+        margin-right: 0; }
+    #task-list li .task-list-date em {
+      color: #7f8c8d;
+      font-size: 0.75em; }
+    #task-list li .task-list-date .fui-calendar-solid-16 {
+      font-size: 0.875em;
+      margin-right: 0.25em; }
+    #task-list li .task-list-status {
+      margin-top: 0.5em;
+      padding: 0.125em;
+      color: #ecf0f1;
+      border-radius: 5px;
+      margin-right: 1em;
+      text-align: center; }
+      #task-list li .task-list-status.Open {
+        background: #2ecc71; }
+      #task-list li .task-list-status.Closed {
+        background: #c0392b; }
+      #task-list li .task-list-status.Suspended {
+        background: #f39c12; }
+    #task-list li .task-list-time .fui-time-16 {
+      font-size: 0.875em;
+      margin-right: 0.25em; }
+    #task-list li .task-list-time em {
+      color: #7f8c8d;
+      font-size: 0.75em; }
+    #task-list li .task-list-cat {
+      margin-top: 0.75em;
+      margin-right: 1em;
+      padding-top: 0.75em;
+      border-top: solid 1px #bdc3c7; }
+      #task-list li .task-list-cat .fui-list-16 {
+        font-size: 0.875em;
+        margin-right: 0.25em; }
+  #task-list .edit-task {
+    float: right;
+    display: inline; }
+    #task-list .edit-task a {
+      text-decoration: none; }
+    #task-list .edit-task .fui-new-16 {
+      font-size: 0.875em;
+      margin-left: 0.25em; }
+
 #category-select {
   background: #2980b9 !important; }
   #category-select .block-header {
@@ -2879,6 +2969,24 @@ table#hours {
 .content#dashboard {
   width: 51.17866% !important;
   margin-right: 0 !important; }
+  .content#dashboard h1.title {
+    margin-bottom: 0; }
+  .content#dashboard .block-header {
+    position: relative; }
+    .content#dashboard .block-header .fui-search-16 {
+      position: absolute;
+      top: 1.125em;
+      right: 1.125em;
+      z-index: 50;
+      font-size: 1.375em;
+      color: #bdc3c7; }
+    .content#dashboard .block-header #filter {
+      text-align: right;
+      margin-top: 1em; }
+      .content#dashboard .block-header #filter label {
+        color: white; }
+      .content#dashboard .block-header #filter select {
+        color: #7f8c8d; }
 
 ul#category-circles {
   margin: 0;
@@ -2976,11 +3084,11 @@ ul#category-circles {
       width: 19%;
       padding-bottom: 19%; }
   ul#category-circles li:nth-child(8n) {
-    background: #3498db;
+    background: #e74c3c;
     width: 30%;
     padding-bottom: 30%; }
     ul#category-circles li:nth-child(8n):hover {
-      background: #2980b9;
+      background: #c0392b;
       margin: 0;
       width: 32%;
       padding-bottom: 32%; }

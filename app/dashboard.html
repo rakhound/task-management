@@ -7,48 +7,44 @@
     	<div class="content-block">
 	    	<div class="block-header">
 	    		<input type="text" ng-model="search" class="search-query" placeholder="Search..." name="search" id="search"><span class="fui-search-16"></span>
-	    		<label>Filter by:</label>
-	    		<select ng-model="sortTask">
-					<option value="TaskTitle">Task name</option>
-					<option value="DueDate">Due Date</option>
-					<option value="Status">Status</option>
-				</select>
+	    		<div id="filter">
+		    		<label>Filter by:</label>
+		    		<select ng-model="sortTask">
+						<option value="TaskTitle">Task name</option>
+						<option value="DueDate">Due Date</option>
+						<option value="Status">Status</option>
+					</select>
+				</div>
 	    	</div>
-	    	<div class="block-content">
-				<table>
-					<thead>
-						<tr>
-							<td>Description</td>
-							<td>Start Date</td>
-							<td>Due Date</td>
-							<td>Category</td>
-							<td>Hours Estimated</td>
-							<td>Hours Invested</td>
-							<td>Notes</td>
-							<td>Status</td>
-							<td><a href="#/new"><i class='icon-plus-sign'></i></a></td>
-						</tr>
-					<tbody ng-controller="taskViewCtrl">
-						<tr ng-repeat="task in tasks | filter:search | orderBy:sortTask">
-							<td><a href="#/tasks/edit/{{task.TaskId}}"><span class="fui-new-16"></span></a>{{task.TaskTitle}}</td>
-							<td>{{task.StartDate| date:'shortDate'}}</td>
-							<td>{{task.DueDate| date:'shortDate'}}</td>
-							<td>{{task.TaskCat}}</td>
-							<td>{{task.BudgetTime}}</td>
-							<td>{{task.SpentTime}}</td>
-							<td>{{task.Notes}}</td>
-							<td>{{task.Status}}</td>
-							<td>
-							  <div class="pull-right">
-								<a href="#/edit/{{task.TaskId}}"><i class='icon-edit'></i></a>
-								<a ng-click="destroy(task)" ><i class="icon-trash icon-red"></i></a> 
-							  </div>
-							</td>
-						</tr>
-					</tbody>
-
-					</thead>
-				</table> 
+	    	<div class="block-content" ng-controller="taskViewCtrl">
+	    		<ul ng-repeat="task in tasks | filter:search | orderBy:sortTask" id="task-list">
+	    			<li>
+	    				<div class="edit-task"><a href="#/tasks/edit/{{task.TaskId}}">Update<span class="fui-new-16"></span></a></div>
+	    				<h3>{{task.TaskTitle}}</h3>
+	    				<div class="task-list-first">
+	    					{{task.Notes}}
+	    				</div>
+	    				<div class="task-list-second">
+	    					<div class="task-list-time">
+	    						<span class="fui-time-16"></span><strong>TIME</strong><br>
+	    						Invested Time: {{task.SpentTime}} hours<br>
+	    						<em>Budgeted Time: {{task.BudgetTime}} hours</em> 
+	    					</div>
+	    					<div class="task-list-cat">
+	    						<span class="fui-list-16"></span><strong>CATEGORY</strong><br>
+	    						{{task.TaskCat}}
+	    					</div>
+	    				</div>
+	    				<div class="task-list-last">
+	    					<div class="task-list-date">
+	    						<span class="fui-calendar-solid-16"></span><strong>DUE DATE</strong><br>{{task.DueDate| date:'shortDate'}}<br /><em>Start Date: {{task.DueDate| date:'shortDate'}}</em>
+	    					</div>
+	    					<div class="task-list-status {{task.Status}}">
+	    						{{task.Status}}
+	    					</div>	    					
+	    				</div>
+	    			</li>
+	    		</ul>
 	    	</div>
 	    </div>	
 
