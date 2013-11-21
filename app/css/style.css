@@ -260,7 +260,7 @@ h6 {
   font-weight: 500;
   text-transform: uppercase; }
 
-.btn, button {
+.btn, button, .button {
   border: none;
   background: #34495e;
   color: white;
@@ -275,7 +275,7 @@ h6 {
   -o-transition: 0.25s;
   transition: 0.25s;
   -webkit-backface-visibility: hidden; }
-  .btn:hover, button:hover, .btn:focus, button:focus {
+  .btn:hover, button:hover, .button:hover, .btn:focus, button:focus, .button:focus {
     background-color: #4e6d8d;
     color: white;
     -webkit-transition: 0.25s;
@@ -283,61 +283,61 @@ h6 {
     -o-transition: 0.25s;
     transition: 0.25s;
     -webkit-backface-visibility: hidden; }
-  .btn:active, button:active, .btn.active, button.active {
+  .btn:active, button:active, .button:active, .btn.active, button.active, .active.button {
     background-color: #2c3e50;
     color: rgba(255, 255, 255, 0.75);
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
-  .btn.disabled, button.disabled, .btn[disabled], button[disabled] {
+  .btn.disabled, button.disabled, .disabled.button, .btn[disabled], button[disabled], [disabled].button {
     background-color: #95a5a6;
     color: white; }
-  .btn.btn-large, button.btn-large {
+  .btn.btn-large, button.btn-large, .btn-large.button {
     padding-bottom: 12px;
     padding-top: 13px; }
-  .btn.btn-primary, button.btn-primary {
+  .btn.btn-primary, button.btn-primary, .btn-primary.button {
     background-color: #1abc9c; }
-    .btn.btn-primary:hover, button.btn-primary:hover, .btn.btn-primary:focus, button.btn-primary:focus {
+    .btn.btn-primary:hover, button.btn-primary:hover, .btn-primary.button:hover, .btn.btn-primary:focus, button.btn-primary:focus, .btn-primary.button:focus {
       background-color: #2fe2bf; }
-    .btn.btn-primary:active, button.btn-primary:active, .btn.btn-primary.active, button.btn-primary.active {
+    .btn.btn-primary:active, button.btn-primary:active, .btn-primary.button:active, .btn.btn-primary.active, button.btn-primary.active, .btn-primary.active.button {
       background-color: #16a085; }
-  .btn.btn-info, button.btn-info {
+  .btn.btn-info, button.btn-info, .btn-info.button {
     background-color: #3498db; }
-    .btn.btn-info:hover, button.btn-info:hover, .btn.btn-info:focus, button.btn-info:focus {
+    .btn.btn-info:hover, button.btn-info:hover, .btn-info.button:hover, .btn.btn-info:focus, button.btn-info:focus, .btn-info.button:focus {
       background-color: #5dade2; }
-    .btn.btn-info:active, button.btn-info:active, .btn.btn-info.active, button.btn-info.active {
+    .btn.btn-info:active, button.btn-info:active, .btn-info.button:active, .btn.btn-info.active, button.btn-info.active, .btn-info.active.button {
       background-color: #2383c4; }
-  .btn.btn-danger, button.btn-danger {
+  .btn.btn-danger, button.btn-danger, .btn-danger.button {
     background-color: #e74c3c; }
-    .btn.btn-danger:hover, button.btn-danger:hover, .btn.btn-danger:focus, button.btn-danger:focus {
+    .btn.btn-danger:hover, button.btn-danger:hover, .btn-danger.button:hover, .btn.btn-danger:focus, button.btn-danger:focus, .btn-danger.button:focus {
       background-color: #ec7063; }
-    .btn.btn-danger:active, button.btn-danger:active, .btn.btn-danger.active, button.btn-danger.active {
+    .btn.btn-danger:active, button.btn-danger:active, .btn-danger.button:active, .btn.btn-danger.active, button.btn-danger.active, .btn-danger.active.button {
       background-color: #dc2d1b; }
-  .btn.btn-success, button.btn-success {
+  .btn.btn-success, button.btn-success, .btn-success.button {
     background-color: #2ecc71; }
-    .btn.btn-success:hover, button.btn-success:hover, .btn.btn-success:focus, button.btn-success:focus {
+    .btn.btn-success:hover, button.btn-success:hover, .btn-success.button:hover, .btn.btn-success:focus, button.btn-success:focus, .btn-success.button:focus {
       background-color: #55d98d; }
-    .btn.btn-success:active, button.btn-success:active, .btn.btn-success.active, button.btn-success.active {
+    .btn.btn-success:active, button.btn-success:active, .btn-success.button:active, .btn.btn-success.active, button.btn-success.active, .btn-success.active.button {
       background-color: #27ad60; }
-  .btn.btn-warning, button.btn-warning {
+  .btn.btn-warning, button.btn-warning, .btn-warning.button {
     background-color: #f1c40f; }
-    .btn.btn-warning:hover, button.btn-warning:hover, .btn.btn-warning:focus, button.btn-warning:focus {
+    .btn.btn-warning:hover, button.btn-warning:hover, .btn-warning.button:hover, .btn.btn-warning:focus, button.btn-warning:focus, .btn-warning.button:focus {
       background-color: #f4d03f; }
-    .btn.btn-warning:active, button.btn-warning:active, .btn.btn-warning.active, button.btn-warning.active {
+    .btn.btn-warning:active, button.btn-warning:active, .btn-warning.button:active, .btn.btn-warning.active, button.btn-warning.active, .btn-warning.active.button {
       background-color: #cea70c; }
-  .btn-toolbar .btn, .btn-toolbar button {
+  .btn-toolbar .btn, .btn-toolbar button, .btn-toolbar .button {
     font-size: 18px;
     padding: 10px 14px 9px; }
-    .btn-toolbar .btn:first-child, .btn-toolbar button:first-child {
+    .btn-toolbar .btn:first-child, .btn-toolbar button:first-child, .btn-toolbar .button:first-child {
       -webkit-border-radius: 6px 0 0 6px;
       -moz-border-radius: 6px 0 0 6px;
       border-radius: 6px 0 0 6px; }
-    .btn-toolbar .btn:last-child, .btn-toolbar button:last-child {
+    .btn-toolbar .btn:last-child, .btn-toolbar button:last-child, .btn-toolbar .button:last-child {
       -webkit-border-radius: 0 6px 6px 0;
       -moz-border-radius: 0 6px 6px 0;
       border-radius: 0 6px 6px 0; }
 
-.btn-toolbar .btn.active, .btn-toolbar button.active {
+.btn-toolbar .btn.active, .btn-toolbar button.active, .btn-toolbar .active.button {
   color: white; }
 
 .demo-headline {
@@ -515,13 +515,13 @@ h6 {
 
 .demo-browser-action {
   padding: 30px 0 12px; }
-  .demo-browser-action > .btn, .demo-browser-action > button {
+  .demo-browser-action > .btn, .demo-browser-action > button, .demo-browser-action > .button {
     padding: 9px 0 10px 11px;
     text-align: left;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px; }
-    .demo-browser-action > .btn:before, .demo-browser-action > button:before {
+    .demo-browser-action > .btn:before, .demo-browser-action > button:before, .demo-browser-action > .button:before {
       color: white;
       content: "\e004";
       font-size: 16px;
@@ -1602,7 +1602,7 @@ textarea,
   .share .toggle {
     float: right;
     margin: 0; }
-  .share .btn, .share button {
+  .share .btn, .share button, .share .button {
     -webkit-border-radius: 0 0 6px 6px;
     -moz-border-radius: 0 0 6px 6px;
     border-radius: 0 0 6px 6px; }
@@ -2987,6 +2987,8 @@ table#hours {
         color: white; }
       .content#dashboard .block-header #filter select {
         color: #7f8c8d; }
+  .content#dashboard #sidebar-first {
+    text-align: center; }
 
 ul#category-circles {
   margin: 0;
@@ -3182,6 +3184,10 @@ a {
       background-color: #e74c3c !important;
       border-color: #c0392b; }
 
-button {
+button, .button {
   border-radius: 5px;
-  line-height: 2em; }
+  line-height: 2em;
+  text-align: center; }
+  button a, .button a {
+    color: #ecf0f1;
+    text-decoration: none; }
