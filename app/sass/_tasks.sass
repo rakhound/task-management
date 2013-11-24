@@ -12,3 +12,77 @@ table#hours
 
 #hours-group
 	border-bottom: dotted 1px $silver
+	padding-bottom: 1em
+
+#task-status
+	input
+		width: auto
+	label
+		margin-right: 1em
+
+#task-list
+	margin: 0
+	padding: 0
+	list-style: none
+	li
+		@include transition (all 0.3s ease-in-out)
+		@include outer-container
+		margin: 1em 0
+		padding: 1em
+		background: #FFF	
+		border-radius: 5px
+		border: solid 3px #DCE4EC
+		&:hover
+			border: solid 3px $turquoise
+		.task-list-first
+			@include span-columns(4)
+		.task-list-second
+			@include span-columns(4)
+			border-right: solid 1px $silver
+			border-left: solid 1px $silver
+			padding-left: 1em
+		.task-list-last		
+			@include span-columns(4)
+		.task-list-date
+			em
+				color: $asbestos
+				font-size: 0.75em	
+			.fui-calendar-solid-16
+				font-size: 0.875em	
+				margin-right: 0.25em
+		.task-list-status
+			margin-top: 0.5em
+			padding: 0.125em
+			color: $clouds
+			border-radius: 5px
+			margin-right: 1em
+			text-align: center	
+			&.Open	
+				background: $emerald
+			&.Closed
+				background: $pomegranate
+			&.Suspended
+				background: $orange	
+		.task-list-time		
+			.fui-time-16
+				font-size: 0.875em	
+				margin-right: 0.25em
+			em
+				color: $asbestos
+				font-size: 0.75em	
+		.task-list-cat
+			margin-top: 0.75em
+			margin-right: 1em
+			padding-top: 0.75em
+			border-top: solid 1px $silver
+			.fui-list-16
+				font-size: 0.875em	
+				margin-right: 0.25em				
+	.edit-task
+		float: right
+		display: inline	
+		a
+			text-decoration: none
+		.fui-new-16
+			font-size: 0.875em
+			margin-left: 0.25em		

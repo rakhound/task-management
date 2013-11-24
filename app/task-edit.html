@@ -1,7 +1,9 @@
 <div class="content two-sidebars" >
 
-<h1 class="title">Edit task</h1>
-
+    <div id="icon-title">
+        <img src="images/flat-ui/illustrations/retina.png" id="icon"/>
+        <h1 class="title">Edit task</h1>
+    </div>
 
 <form name="taskForm" id="taskForm">
   
@@ -20,23 +22,22 @@
   </div>
 
   <div class="form-item" id="task-time">
-    <div id="task-budget-time"><input type="number" placeholder="Hours Estimated" name="budget-time" id="budget-time" ng-model="task.BudgetTime"></div>
-    <div id="task-spent-time"><input type="number" placeholder="Hours Invested" name="spent-time" id="spent-time" ng-model="task.SpentTime"></div>
+    <div id="task-budget-time"><input type="text" placeholder="Hours Estimated" name="budget-time" id="budget-time" ng-model="task.BudgetTime"></div>
+    <div id="task-spent-time"><input type="text" placeholder="Hours Invested" name="spent-time" id="spent-time" ng-model="task.SpentTime"></div>
   </div>
 
   <div class="form-item">
     <textarea placeholder="Write a little bit about the task you would like to complete." name="note" id="note" ng-model="task.Notes"></textarea>
   </div>
 
-  <div class="form-item">
-    <label>Status</label><br />
+  <div class="form-item" id="task-status">
     <label><input type="radio" name="taskStatus" value="Open" ng-model="task.Status" />Open</label>
-    <label><input type="radio" name="taskStatus" value="Closed" ng-model="task.Status"/>Closed</label>
+    <label><input type="radio" name="taskStatus" value="Closed" ng-model="task.Status" />Closed</label>
     <label><input type="radio" name="taskStatus" value="Suspended" ng-model="task.Status" />Suspended</label>
   </div>
 
   <div class="form-actions">
-    <button ng-click="save()" ng-disabled="taskForm.$invalid">Save</button>
+    <button class="btn-primary" ng-click="save()" ng-disabled="taskForm.$invalid">Save</button>
   </div>
   
 </form>
@@ -49,9 +50,14 @@
         <h2>Task categories</h2>
     </div>
     <div class="sidebar-block" id="category-select">
-      <ul  ng-controller="categoryController">
-        <li ng-repeat="cat in categories" ng-include="'categorySelectAdd.html'"></li>
-      </ul>
+      <div class="block-header">
+        <input type="text" ng-model="search" class="search-query" placeholder="Search..." name="search" id="search"><span class="fui-search-16"></span>
+      </div>
+      <div class="block-content">
+        <ul  ng-controller="categoryController">
+          <li ng-repeat="cat in categories | filter:search | orderBy:sortTask" ng-include="'category-select-add.html'"></li>
+        </ul>
+      </div>
     </div>
 </aside>
 
@@ -61,13 +67,14 @@
         <h2>Your new task</h2>
     </div>
     <div class="sidebar-block" id="task-build">
+      <div class="block-content">
         <p><strong>Title:</strong> {{task.TaskTitle}}</p>
         <p><strong>Start Date:</strong> {{task.StartDate}}</p>
         <p><strong>Due Date:</strong> {{task.DueDate}}</p>
         <p><strong>Category:</strong> {{task.TaskCat}}</p>
         <div id="hours-group">
           <strong>Hours:</strong>
-          <div id="hours-chart">
+          <div id="hours-chart" class="chart">
 
           </div>
           <table id="hours">
@@ -79,8 +86,8 @@
             </thead>
             <tbody>
               <tr>
-                <th>Estimated</th>
-                <td>{{task.BudgetTime}}</td>
+                <th>Remaining</th>
+                <td>{{RemainTime}}</td>
               </tr>
               <tr>
                 <th>Invested</th>
@@ -91,5 +98,6 @@
         </div>    
         <p><strong>Notes:</strong> {{task.Notes}}</p>
         <p><strong>Status:</strong> {{task.Status}}</p>
+      </div>  
     </div>    
 </aside>

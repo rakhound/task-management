@@ -1,8 +1,63 @@
 #category-select
+	background: $belize-hole !important
+	.block-header
+		background: shade($belize-hole, 20%) !important
+		position: relative
+		.fui-search-16
+			position: absolute
+			top: 1.125em
+			right: 1.125em
+			z-index: 50
+			font-size: 1.375em
+			color: $silver
+	.block-content
+		padding: 0 !important
 	ul
 		margin: 0
 		padding: 0
 		li
+			@include transition (all 0.3s ease-in-out)
 			margin: 0
-			padding: 0
+			padding: 0.5em 0.5em
 			list-style: none
+			border-bottom: solid 2px $peter-river
+			color: $clouds
+			.category-title
+				margin-left: 1.25em
+				cursor: pointer
+			&:hover
+				color: $turquoise
+			a
+				color: $clouds
+				text-decoration: none
+				&:hover	
+					color: $turquoise		
+			span
+				font-size: 0.75em	
+				line-height: 1.35em
+				&.fui-arrow-right-16
+					cursor: pointer
+					position: absolute
+				&.fui-plus-16
+					background: $orange
+					cursor: pointer
+					padding: 0.125em 0.125em 0.25em 0.25em
+					border-radius: 1000px
+					margin-left: 0.5em
+					&.hover
+						background: $pumpkin
+						color: $clouds	
+			&:last-child
+				border-bottom: none
+			&:hover
+				background: shade($belize-hole, 20%)
+			input
+				margin: 0.5em
+				width: 70%	
+			ul
+				margin:  0 0 0 1em
+				li
+					border-bottom: none
+	button.btn-danger
+		font-size: 0.75em
+		line-height: 3em				

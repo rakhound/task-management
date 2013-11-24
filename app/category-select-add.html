@@ -1,0 +1,8 @@
+<i ng-class="{'icon-chevron-down':!cat.isExpanded, 'icon-chevron-up':cat.isExpanded}" ng-show="cat.children.length>0" ng-click="toggle(cat)"><span class="fui-arrow-right-16"></span></i>
+<a ng-click="select(cat)" class="category-title">{{cat.cat.CategoryTitle}}</a>
+<a ng-click="add(cat)"><span class="fui-plus-16"></span></a>
+
+<input type="text" placeholder="Click enter to submit" ng-model="newCat.CategoryTitle" ng-enter="save(cat)" ng-show="cat.isDelivering"><button class="btn-danger" ng-click="cancel(cat)" ng-show="cat.isDelivering">Cancel</button>
+<ul>
+	<li ng-repeat="cat in cat.children" ng-include="'category-select-add.html'" ng-show="cat.show"></li>
+</ul>
