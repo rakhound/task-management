@@ -1,11 +1,10 @@
 var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
-	$routeProvider.when('/', {templateUrl:"dashboard.html", controller:"categoryController"})	
-	$routeProvider.when('/tasks', {templateUrl:"taskList.html", controller:"taskViewCtrl"})
+	$routeProvider.when('/', {templateUrl:"dashboard.html", controller:"categoryController"})
+	$routeProvider.when('/tasks', {templateUrl:"task-list.html", controller:"taskViewCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
-	// For editing a task the same template as task creation would suffice. No need for a separate template for edit.
-	$routeProvider.when('/edit/:id', {templateUrl:"task-create.html" , controller:"editCtrl"})
+	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
 	$routeProvider.when('/categories', {templateUrl:"categories.html", controller:"categoryController"})
 	$routeProvider.when('/categories/index/:id', {templateUrl:"categories-id.html", controller:"categoryViewIdCtrl"})
 	$routeProvider.when('/categories/edit/:id', {templateUrl:"categories.html", controller:"categoryController"})
@@ -39,9 +38,8 @@ categoryViewIdCtrl = function($scope, $routeParams, Category, Task) {
 
 }
 
-categoryController = function($scope, Category, TaskFormCatField) {
+categoryController = function($scope, Category) {
 
-	$scope.TaskCategory = TaskFormCatField;
 	var cats = Category.query(function(){
 
 		var catData=[];
@@ -98,11 +96,8 @@ categoryController = function($scope, Category, TaskFormCatField) {
 
 	$scope.select = function(category)
 	{
-		// Add category title to task form only for humanly readability purposes
-		$scope.TaskCategory.Title = category.cat.CategoryTitle;
-		//Database field is TaskCategoryId and that is what is needed to be added to task.
-		//No need for a corresponding field for this in the template so we just update it here.
-		$scope.task.TaskCategoryId = category.cat.CategoryId;
+		// Add category to task form
+		$scope.task.TaskCat = category.cat.CategoryTitle;
 	}
 
 	$scope.expand = function(category)
@@ -132,10 +127,8 @@ categoryController = function($scope, Category, TaskFormCatField) {
 	}
 }
 
-newTaskCtrl = function ($scope, Task, $location, TaskFormCatField){
-	$scope.pageTitle = "Create new task";
-	$scope.TaskCategory = TaskFormCatField;
-	$scope.TaskCategory.Title="";
+newTaskCtrl = function ($scope, Task, $location){
+
 	$scope.task = {	TaskTitle:"", DueDate:"", Notes:""}
 	$scope.save = function ()
 	{
@@ -144,27 +137,22 @@ newTaskCtrl = function ($scope, Task, $location, TaskFormCatField){
 			// Redirect after saving task
 			$location.path('/tasks');
 		});
+
+		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
 	}
+
+
+
 }
 
+editCtrl = function ($scope, $routeParams, $location, Task) {
 
-
-editCtrl = function ($scope, $routeParams, $location, Task, TaskFormCatField, Category ) {
-	$scope.pageTitle="Edit task";
-	$scope.TaskCategory = TaskFormCatField;
 	var self = this;
 	Task.get({id: $routeParams.id}, function(task) {
 		self.original = task;
 		$scope.task = new Task(self.original);
-			Category.get({id: self.original.TaskCategoryId}, function(category) {
-				$scope.TaskCategory.Title = category.CategoryTitle;
-			}
-			, function()
-			{$scope.TaskCategory.Title = "";});
-			
+		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
 	});
-	
-
 
 	$scope.isClean = function() {
 		return angular.equals(self.original, $scope.task);
@@ -185,18 +173,6 @@ editCtrl = function ($scope, $routeParams, $location, Task, TaskFormCatField, Ca
 }
 
 var TaskMngApi = angular.module('TaskManagementApi', ['ngResource'])
-
-// This is meant for the category title field in the task creation and task editing forms.
-// this value has no corresponding database field and is only for display purposes to show
-// the user the title of the category that a task belongs to rather than the non-descriptive
-// CategoryId. And because this data is shared between categoryController and
-// the task creation and task editing controllers, this service is used as a means of communication
-// between them.
-
-TaskMngApi.factory('TaskFormCatField', function() {
-	return {Title:"this is a test Category"};
-});
-
 TaskMngApi.factory('Task', function($resource) {
 	var Task = $resource('http://localhost/task-management/index.php/api/tasks/:method/:id', {}, {
 		query: {method:'GET', params: {method:'index'}, isArray:true },
@@ -239,7 +215,6 @@ TaskMngApi.factory('Category', function($resource) {
 });
 
 
-
 TaskManagementApp.directive('ngEnter', function() {
 	return function(scope, element, attrs) {
 		element.bind("keydown", function(event) {
@@ -253,10 +228,6 @@ TaskManagementApp.directive('ngEnter', function() {
 		});
 	};
 });
-
-
-
-
 
 // TODO-ROYA: not sure if this piece of logic belongs to here or
 // it belongs to the server side, i.e leave it to the server hierarchize
@@ -292,3 +263,4 @@ function addToParent(childCat , arr)
 		}
 	}
 }
+
