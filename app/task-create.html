@@ -1,13 +1,13 @@
 <div class="content two-sidebars" >
 
-<h1 class="title">Create new task</h1>
+<h1 class="title" ng-model="pageTitle">{{pageTitle}}</h1>
 
 
 <form name="taskForm" id="taskForm">
   
-  <div class="form-item" ng-class="{error: taskForm.desc.$invalid}">
+  <div class="form-item" ng-class="{error: taskForm.title.$invalid}">
     <input type="text" placeholder="Task title" name="title" id="" ng-model="task.TaskTitle" required>
-    <span ng-show="taskForm.desc.$error.required" class="help-inline">Required</span>
+    <span ng-show="taskForm.title.$error.required" class="help-inline">Required</span>
   </div>
 
   <div class="form-item" id="task-dates">
@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-item">
-    <input type="text" placeholder="Add a category from the right" name="category" id="category" ng-model="task.TaskCat">
+    <input type="text" placeholder="Add a category from the right" name="category" id="category" ng-model="TaskCategory.Title">
   </div>
 
   <div class="form-item" id="task-time">
@@ -64,7 +64,7 @@
         <p><strong>Title:</strong> {{task.TaskTitle}}</p>
         <p><strong>Start Date:</strong> {{task.StartDate}}</p>
         <p><strong>Due Date:</strong> {{task.DueDate}}</p>
-        <p><strong>Category:</strong> {{task.TaskCat}}</p>
+        <p><strong>Category:</strong> {{TaskCategory.Title}}</p>
         <div id="hours-group">
           <strong>Hours:</strong>
           <div id="hours-chart">
