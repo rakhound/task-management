@@ -132,7 +132,7 @@ newTaskCtrl = function ($scope, Task, $location){
 		$scope.task.DueDate = new Date();
 		Task.save($scope.task, function (){
 			// Redirect after saving task
-			$location.path('/tasks');
+			$location.path('/');
 		});
 
 		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
