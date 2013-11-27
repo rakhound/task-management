@@ -33,9 +33,6 @@ categoryViewIdCtrl = function($scope, $routeParams, Category, Task) {
 		$scope.categories = categories;
 	});
 
-	// TODO: only tasks with matching category name should be loaded
-	$scope.tasks = Task.query();
-
 }
 
 categoryController = function($scope, Category) {

@@ -2897,6 +2897,30 @@ table#hours {
       font-size: 0.875em;
       margin-left: 0.25em; }
 
+.content#categoryid {
+  width: 51.17866% !important;
+  margin-right: 0 !important; }
+  .content#categoryid h1.title {
+    margin-bottom: 0; }
+  .content#categoryid .block-header {
+    position: relative; }
+    .content#categoryid .block-header .fui-search-16 {
+      position: absolute;
+      top: 1.125em;
+      right: 1.125em;
+      z-index: 50;
+      font-size: 1.375em;
+      color: #bdc3c7; }
+    .content#categoryid .block-header #filter {
+      text-align: right;
+      margin-top: 1em; }
+      .content#categoryid .block-header #filter label {
+        color: white; }
+      .content#categoryid .block-header #filter select {
+        color: #7f8c8d; }
+  .content#categoryid #sidebar-first {
+    text-align: center; }
+
 #category-select {
   background: #2980b9 !important; }
   #category-select .block-header {
