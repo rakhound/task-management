@@ -2675,7 +2675,8 @@ header {
       margin-right: 4.82916%;
       width: 47.58542%;
       margin-right: 0;
-      width: 50%; }
+      width: 50%;
+      min-height: 280px; }
       #main #sidebar-group #sidebar-first:last-child, #main #sidebar-group #sidebar-second:last-child {
         margin-right: 0; }
     #main #sidebar-group #sidebar-first {
@@ -2688,7 +2689,8 @@ header {
     margin-right: 0;
     width: 24.41063%;
     overflow: hidden;
-    padding: 2em; }
+    padding: 2em;
+    min-height: 1000px; }
     #main .sidebar:last-child {
       margin-right: 0; }
     #main .sidebar#sidebar-first {
@@ -2700,7 +2702,8 @@ header {
       display: block;
       margin-right: 4.82916%;
       width: 100%;
-      background-color: #2980b9; }
+      background-color: #2980b9;
+      min-height: 2000px; }
       #main .sidebar#sidebar-span:last-child {
         margin-right: 0; }
   #main .sidebar-block {
@@ -2918,8 +2921,6 @@ table#hours {
         color: white; }
       .content#categoryid .block-header #filter select {
         color: #7f8c8d; }
-  .content#categoryid #sidebar-first {
-    text-align: center; }
 
 #category-select {
   background: #2980b9 !important; }
@@ -3011,8 +3012,6 @@ table#hours {
         color: white; }
       .content#dashboard .block-header #filter select {
         color: #7f8c8d; }
-  .content#dashboard #sidebar-first {
-    text-align: center; }
 
 ul#category-circles {
   margin: 0;

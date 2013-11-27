@@ -57,17 +57,25 @@
 	        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
 	        <h2>Create new task</h2>
 	    </div>
-	    <br>
-	    <div class="button btn-danger"><a href="/#/tasks/create">Let's get started!</a></div>
+	    <p>Set a goal, define a category and create tasks that will help you mark your success along the way.</p>
+	    <div class="button btn-danger" style="line-height:65px"><a href="/#/tasks/create">Let's get started!</a></div>
 	</aside>
 
 	<aside class="sidebar" id="sidebar-second">
 	    <div id="icon-title">
 	        <img src="images/flat-ui/illustrations/calendar.png" id="icon"/>
-	        <h2>Your calendar</h2>
+	        <h2>Your calendar</h2>		
 	    </div>
-	    <div class="sidebar-block">
-
+	    <div class="sidebar-block" ng-controller="taskViewCtrl">
+		    <ul ng-repeat="task in tasks | orderBy:DueDate | limitTo:1" ng-show="task.Status == 'Open'" id="task-list">
+		   		<li>
+	   				<h3>{{task.TaskTitle}}</h3>
+	    			<div class="task-list-date">
+	    				<span class="fui-calendar-solid-16"></span><strong>DUE DATE</strong><br>{{task.DueDate| date:'shortDate'}}<br />
+	    			</div>
+	    			<div class="edit-task"><a href="#/tasks/edit/{{task.TaskId}}">Update<span class="fui-new-16"></span></a></div>
+	   			</li>
+		   	</ul>
 	    </div>
 	</aside>
 
