@@ -1,52 +1,52 @@
-<div class="content two-sidebars" id="dashboard" >
+<div class="content two-sidebars" id="dashboard">
 
 	<div id="icon-title">
         <img src="images/flat-ui/illustrations/retina.png" id="icon"/>
         <h1 class="title">Your tasks, {{user.username}}</h1>
     </div>
-    	<div class="content-block">
-	    	<div class="block-header">
-	    		<input type="text" ng-model="search" class="search-query" placeholder="Search..." name="search" id="search"><span class="fui-search-16"></span>
-	    		<div id="filter">
-		    		<label>Filter by:</label>
-		    		<select ng-model="sortTask">
-						<option value="TaskTitle">Task name</option>
-						<option value="DueDate">Due Date</option>
-						<option value="Status">Status</option>
-					</select>
-				</div>
-	    	</div>
-	    	<div class="block-content" ng-controller="taskViewCtrl">
-	    		<ul ng-repeat="task in tasks | filter:search | orderBy:sortTask" id="task-list">
-	    			<li>
-	    				<div class="edit-task"><a href="#/tasks/edit/{{task.TaskId}}">Update<span class="fui-new-16"></span></a></div>
-	    				<h3>{{task.TaskTitle}}</h3>
-	    				<div class="task-list-first">
-	    					{{task.Notes}}
+    <div class="content-block">
+	    <div class="block-header">
+	   		<input type="text" ng-model="search" class="search-query" placeholder="Search..." name="search" id="search"><span class="fui-search-16"></span>
+	    	<div id="filter">
+		   		<label>Filter by:</label>
+		    	<select ng-model="sortTask">
+					<option value="TaskTitle">Task name</option>
+					<option value="DueDate">Due Date</option>
+					<option value="Status">Status</option>
+				</select>
+			</div>
+	    </div>
+	    <div class="block-content" ng-controller="taskViewCtrl">
+	    	<ul ng-repeat="task in tasks | filter:search | orderBy:sortTask" id="task-list">
+	    		<li>
+	   				<div class="edit-task"><a href="#/tasks/edit/{{task.TaskId}}">Update<span class="fui-new-16"></span></a></div>
+	   				<h3>{{task.TaskTitle}}</h3>
+	   				<div class="task-list-first">
+	    				{{task.Notes}}
+	    			</div>
+	    			<div class="task-list-second">
+	    				<div class="task-list-time">
+	    					<span class="fui-time-16"></span><strong>TIME</strong><br>
+	   						Invested Time: {{task.SpentTime}} hours<br>
+	   						<em>Budgeted Time: {{task.BudgetTime}} hours</em> 
+	   					</div>
+	    				<div class="task-list-cat">
+	    					<span class="fui-list-16"></span><strong>CATEGORY</strong><br>
+	    					{{task.TaskCat}}
 	    				</div>
-	    				<div class="task-list-second">
-	    					<div class="task-list-time">
-	    						<span class="fui-time-16"></span><strong>TIME</strong><br>
-	    						Invested Time: {{task.SpentTime}} hours<br>
-	    						<em>Budgeted Time: {{task.BudgetTime}} hours</em> 
-	    					</div>
-	    					<div class="task-list-cat">
-	    						<span class="fui-list-16"></span><strong>CATEGORY</strong><br>
-	    						{{task.TaskCat}}
-	    					</div>
+	    			</div>
+	   				<div class="task-list-last">
+	    				<div class="task-list-date">
+	    					<span class="fui-calendar-solid-16"></span><strong>DUE DATE</strong><br>{{task.DueDate| date:'shortDate'}}<br /><em>Start Date: {{task.StartDate| date:'shortDate'}}</em>
 	    				</div>
-	    				<div class="task-list-last">
-	    					<div class="task-list-date">
-	    						<span class="fui-calendar-solid-16"></span><strong>DUE DATE</strong><br>{{task.DueDate| date:'shortDate'}}<br /><em>Start Date: {{task.DueDate| date:'shortDate'}}</em>
-	    					</div>
-	    					<div class="task-list-status {{task.Status}}">
-	    						{{task.Status}}
-	    					</div>	    					
-	    				</div>
-	    			</li>
-	    		</ul>
-	    	</div>
-	    </div>	
+	    				<div class="task-list-status {{task.Status}}">
+	    					{{task.Status}}
+	   					</div>	    					
+	    			</div>
+	    		</li>
+	    	</ul>
+	    </div>
+	</div>	
 
 </div>
 
@@ -57,17 +57,25 @@
 	        <img src="images/flat-ui/illustrations/pencils.png" id="icon"/>
 	        <h2>Create new task</h2>
 	    </div>
-	    <br>
-	    <div class="button btn-danger"><a href="/#/tasks/create">Let's get started!</a></div>
+	    <p>Set a goal, define a category and create tasks that will help you mark your success along the way.</p>
+	    <div class="button btn-danger" style="line-height:65px"><a href="/#/tasks/create">Let's get started!</a></div>
 	</aside>
 
 	<aside class="sidebar" id="sidebar-second">
 	    <div id="icon-title">
 	        <img src="images/flat-ui/illustrations/calendar.png" id="icon"/>
-	        <h2>Your calendar</h2>
+	        <h2>Your calendar</h2>		
 	    </div>
-	    <div class="sidebar-block">
-
+	    <div class="sidebar-block" ng-controller="taskViewCtrl">
+		    <ul ng-repeat="task in tasks | orderBy:DueDate | limitTo:1" ng-show="task.Status == 'Open'" id="task-list">
+		   		<li>
+	   				<h3>{{task.TaskTitle}}</h3>
+	    			<div class="task-list-date">
+	    				<span class="fui-calendar-solid-16"></span><strong>DUE DATE</strong><br>{{task.DueDate| date:'shortDate'}}<br />
+	    			</div>
+	    			<div class="edit-task"><a href="#/tasks/edit/{{task.TaskId}}">Update<span class="fui-new-16"></span></a></div>
+	   			</li>
+		   	</ul>
 	    </div>
 	</aside>
 

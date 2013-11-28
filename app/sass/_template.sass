@@ -49,11 +49,12 @@ header
 	#sidebar-group	
 		@include span-columns(6)
 		@include omega
-		width: 48.821340%					
+		width: 48.821340%				
 		#sidebar-first, #sidebar-second
 			@include span-columns(3 of 6)
 			@include omega
 			width: 50%
+			min-height: 280px
 		#sidebar-first
 			background-color: $nephritis	
 	.sidebar
@@ -62,6 +63,7 @@ header
 		width: 24.410625%
 		overflow: hidden
 		padding: 2em
+		min-height: 1000px
 		//margin-right: 0
 		&#sidebar-first
 			background-color: $peter-river
@@ -70,6 +72,7 @@ header
 		&#sidebar-span
 			@include span-columns(6 of 6)
 			background-color: $belize-hole
+			min-height: 2000px
 
 			
 	.sidebar-block

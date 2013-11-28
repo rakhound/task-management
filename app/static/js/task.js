@@ -58,9 +58,6 @@ categoryViewIdCtrl = function($scope, $location, $routeParams, Category, Task, U
 		$scope.categories = categories;
 	});
 
-	// TODO: only tasks with matching category name should be loaded
-	$scope.tasks = Task.query();
-
 }
 
 categoryController = function($scope, $location, Category, UserService) {
@@ -174,7 +171,7 @@ newTaskCtrl = function ($scope, Task, $location, UserService ){
 		$scope.task.UserId = $scope.user.UserId;
 		Task.save($scope.task, function (){
 			// Redirect after saving task
-			$location.path('/tasks');
+			$location.path('/');
 		});
 
 		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
