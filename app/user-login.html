@@ -1,0 +1,25 @@
+<div class="content two-sidebars" >
+
+<h1 class="title">User Login</h1>
+
+
+<form name="LoginForm" id="LoginForm">
+  
+  <div class="form-item" >
+	<input type="text" placeholder="User Name" name="UserName" id="" ng-model="user.UserName" required>
+    <span ng-show="LoginForm.UserName.$dirty && LoginForm.UserName.$error.required" class="help-inline">Required!</span>
+  </div>
+
+  <div class="form-item" >
+    <input type="password" placeholder="Password" name="Password" id="" ng-model="user.Password" required>
+	<span ng-show="LoginForm.Password.$dirty && LoginForm.Password.$error.required" class="help-inline">Required!</span>
+  </div>
+
+  <div class="form-actions">
+    <button ng-click="login()" ng-disabled="LoginForm.$invalid">Sign In</button>
+  </div>  
+</form>
+
+<p><a href="#/register">Click here to create an account</a></p> 
+
+</div>

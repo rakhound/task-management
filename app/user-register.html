@@ -1,0 +1,45 @@
+<div class="content two-sidebars" >
+
+<h1 class="title">User Registration</h1>
+
+
+<form name="userRegForm" id="userRegForm">
+  
+  <div class="form-item" ng-class="{error: userRegForm.UserFirstName.$invalid}">
+    <input type="text" placeholder="First Name" name="FirstName" id="" ng-model="user.UserFirstName" required>
+    <span ng-show="userRegForm.FirstName.$dirty && userRegForm.FirstName.$error.required" class="help-inline">Required!</span>
+  </div>
+  <div>
+	<input type="text" placeholder="Last Name" name="LastName" id="" ng-model="user.UserLastName" required>
+    <span ng-show="userRegForm.LastName.$dirty && userRegForm.LastName.$error.required" class="help-inline">Required!</span>
+  </div>
+  <div class="form-item">  
+	<input type="email" placeholder="Email Address" name="EmailAdress" id="" ng-model="user.EmailAddress" required>
+    <span class="error help-inline" ng-show="userRegForm.EmailAdress.$dirty && userRegForm.EmailAdress.$error.required">Required!</span>
+    <span class="error help-inline" ng-show="userRegForm.EmailAdress.$dirty && userRegForm.EmailAdress.$error.email"> Invalid email!</span>
+  </div>
+
+  
+  <div class="form-item">
+	<input type="text" placeholder="User Name" name="UserName" id="" ng-model="user.UserName" required>
+    <span ng-show="userRegForm.UserName.$dirty && userRegForm.UserName.$error.required" class="help-inline">Required!</span>
+	 <span ng-show="duplicate" class="help-inline">User name is already in use!</span>
+  </div>
+
+  <div class="form-item" >
+    <input type="password" placeholder="Password" name="Password1" id="Password1" ng-model="user.Password" required>
+	<span ng-show="userRegForm.Password1.$dirty && userRegForm.Password1.$error.required" class="help-inline">Required!</span>
+  </div>
+  <div class="form-item">
+   <input type="password" placeholder="Confirm password" name="Password2" id="Password2"  ng-model="confirmPswd" pw-check="Password1" required>
+	<span ng-show="userRegForm.Password2.$dirty && userRegForm.Password2.$error.required" class="help-inline">Required!</span>
+	<span ng-show="userRegForm.Password2.$dirty && userRegForm.Password2.$error.pwMatch" class="help-inline">Passwords don't match!</span>
+  </div>
+
+  <div class="form-actions">
+    <button ng-click="save()" ng-disabled="userRegForm.$invalid">Save</button>
+  </div>  
+</form>
+
+
+</div>

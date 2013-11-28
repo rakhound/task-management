@@ -17,10 +17,11 @@
       <header id="header">
         <div id="logo">
           <img src="images/flat-ui/illustrations/clipboard.png" id="icon"/>
-          <h3>Task Manager</h3>
+          <h3>Task Manager</h3>		  
         </div>
+		<div><a href="#/" >Logout</a></div>
       </header>
-
+	
       <section id="main">
 
         <div ng-app="TaskManagement">
@@ -32,11 +33,11 @@
       <nav id="menu">
         <ul>
           <li><a id="open-icon" href="#"><span class="icon fui-list-16"></span>MENU</a></li>
-          <li><a href="#/"><span class="icon fui-gear-16"></span>Dashboard</a></li>
+          <li><a href="#/dashboard"><span class="icon fui-gear-16"></span>Dashboard</a></li>
           <li><a href="#/tasks"><span class="icon fui-check-inverted-2-16"></span>My Tasks</a></li>
           <li><a href="#/tasks/create"><span class="icon fui-new-16"></span>Create new task</a></li>
-          <li><a href="#"><span class="icon fui-user-16"></span>About</a></li>
-          <li><a href="#"><span class="icon fui-chat-16"></span>Contact</a></li>
+          <li><a href="#/login"><span class="icon fui-user-16"></span>About</a></li>
+          <li><a href="#/register"><span class="icon fui-chat-16"></span>Contact</a></li>
         </ul>
       </nav>
 
@@ -46,6 +47,10 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script> 
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+
+
+  
   <script type="text/javascript" src="js/mmenu/jquery.mmenu.js"></script>
   <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
   <script type="text/javascript" src="js/highcharts/highcharts.js"></script>

@@ -18,6 +18,8 @@ class Categories extends REST_Controller {
 	public function index_get()
 	{
 		$categories = $this->category_model->get_all();
+		
+		//FB::info("inside add method in category controller index-get and categories are:".$categories);
 		$this->response($categories);
 	}
 
@@ -57,6 +59,17 @@ class Categories extends REST_Controller {
 		{
 			$this->response(array('status' => false, 'error_message' => 'This Category does not exist!'), 404);
 		}
+	}
+	
+	public function userCategories_get($categoryId)
+	{
+		FB::info("inside userCategories--userId is: ".$categoryId);
+		if ( ! $categoryId)
+		{
+			$this->response(array('status' => false, 'error_message' => 'No Category ID was provided.'), 400);
+		}
+
+		$this->response($this->category_model->getUserCategories($categoryId));
 	}
 
 }
