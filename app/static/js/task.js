@@ -188,7 +188,7 @@ editCtrl = function ($scope, $routeParams, $location, Task) {
 
 	$scope.save = function() {
 		$scope.task.update(function() {
-			$location.path('/');
+			$location.path('/dashboard');
 		});
 	};
 }
