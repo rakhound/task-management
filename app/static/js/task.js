@@ -171,7 +171,7 @@ newTaskCtrl = function ($scope, Task, $location, UserService ){
 		$scope.task.UserId = $scope.user.UserId;
 		Task.save($scope.task, function (){
 			// Redirect after saving task
-			$location.path('/');
+			$location.path('/dashboard');
 		});
 
 		$scope.RemainTime = parseInt($scope.task.BudgetTime) - parseInt($scope.task.SpentTime);
