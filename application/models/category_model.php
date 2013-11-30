@@ -2,7 +2,7 @@
 
 class Category_model extends CI_Model
 {
-    public $table = 'category';
+    private $table = 'category';
 
     public function get_all()
     {
@@ -41,7 +41,6 @@ class Category_model extends CI_Model
 	{
 		return $this->db->where('userId', $id)->get($this->table)->result();
 	}
-
 }
 
 /* End of file category_model.php */

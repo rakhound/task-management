@@ -2,7 +2,7 @@
 
 class Task_model extends CI_Model
 {
-    public $table = 'task';
+    private $table = 'task';
 
     public function get_all()
     {	

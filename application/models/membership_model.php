@@ -3,9 +3,9 @@ require_once(APPPATH.'/libraries/FirePHPCore/fb.PHP');
 
 class Membership_model extends CI_Model
 {
-    public $table = 'membership';
+    private $table = 'membership';
 
-    function validate($data)
+    public function validate($data)
 	{
 		FB::info($data); 
 		FB::info("inside validate method in member_model");
@@ -13,7 +13,6 @@ class Membership_model extends CI_Model
 		FB::info("Password is: ".$data['Password']); 			
 		$this->db->where('UserName', $data['UserName']);
 		$this->db->where('Password', $data['Password']);
-		//$result =  $this->db->get($this->table)->result();
 		$query =  $this->db->get($this->table);
 		 if($query->num_rows == 1)
 		 {
@@ -25,17 +24,17 @@ class Membership_model extends CI_Model
                     );
             $this->session->set_userdata($data);
 			return $row;
-		 }
-		
-		
+		 }		
 		return null;
 	}
-	function logout()
+	
+	public function logout()
 	{
 		$this->session->sess_destroy();
 		return true;
 	}
-	function checkDuplicatUserName($data)
+	
+	public function checkDuplicatUserName($data)
 	{
 		FB::info($data); 
 		FB::info("inside checkDuplicatUserName method in member_model"); 

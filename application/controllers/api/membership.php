@@ -30,20 +30,6 @@ class Membership extends REST_Controller {
 
 		$this->response($this->member_model->validate($user));
 	}
-	
-	// public function checkDupUname_post()
-	// {
-		// FB::info("Inside checkDupUname_post");
-		// FB::info($this->post());
-		// FB::info("Inside checkDupUname_post");
-		// $this->membership_model->checkDuplicatUserName($this->post());
-		// if($this->membership_model->checkDuplicatUserName($this->post()))	
-		// {
-			// $this->response(array('status' => false, 'error_message' => 'User name is already in use.'), 400);
-		// }
-
-		// $this->response(array('status' => true,'message' => 'everything is fine.'));
-	// }
 
 	public function save_post($id = NULL)
 	{
@@ -68,7 +54,6 @@ class Membership extends REST_Controller {
 
 	public function remove_delete($id = NULL)
 	{
-		//if ($this->membership_model->delete($id))
 		if ($this->membership_model->logout($id))
 		{
 			$this->response(array('status' => true, 'message' => sprintf('User #%d has been deleted.', $id)), 200);
@@ -85,13 +70,8 @@ class Membership extends REST_Controller {
 		FB::info($this->post()); 
 		$user = $this->membership_model->validate($this->post());
 		
-		if($user)
-		//if($this->membership_model->validate($this->post()))
-		{
-			//$username =  $this->post('UserName);
-			//$data = array('username' => $id, isLoggedIn => true );
-			//$this->session->set_userdata($data);
-			
+		if($user)		
+		{	
 			$this->response(array('status' => true, 'user'=> $user, 'message' => sprintf('login has been successful')), 200);
 		}
 		else
@@ -99,7 +79,6 @@ class Membership extends REST_Controller {
 			$this->response(array('status' => false, 'error_message' => 'This login information is not correct!'), 404);
 		}
 	}
-
 }
 
 /* End of file projects.php */
