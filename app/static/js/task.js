@@ -1,11 +1,9 @@
 var TaskManagementApp = angular.module('TaskManagement', ['TaskManagementApi'])
 TaskManagementApp.config(function($routeProvider,$locationProvider)
 {
-	//$routeProvider.when('/', {templateUrl:"dashboard.html", controller:"categoryController"})
 	$routeProvider.when('/', {templateUrl:"user-login.html", controller:"userLoginCtrl"})
 	$routeProvider.when('/dashboard', {templateUrl:"dashboard.html", controller:"categoryController"})
 	$routeProvider.when('/register', {templateUrl:"user-register.html", controller:"newUserCtrl"})
-	//$routeProvider.when('/login', {templateUrl:"user-login.html", controller:"userLoginCtrl"})
 	$routeProvider.when('/tasks', {templateUrl:"task-list.html", controller:"taskViewCtrl"})
 	$routeProvider.when('/tasks/create', {templateUrl:"task-create.html" , controller:"newTaskCtrl"})
 	$routeProvider.when('/tasks/edit/:id', {templateUrl:"task-edit.html" , controller:"editCtrl"})
@@ -21,23 +19,14 @@ dashboardCtrl = function($scope, Category) {
 
 taskViewCtrl = function($scope, $location, Task, UserService) {
 	
-	
 	$scope.user = UserService;
 	if ($scope.user.isLogged == false)
 	{
 		$location.path('/');
 		return;
 	}
-	//$scope.tasks = Task.getUserTasks({id: $scope.user.userId});
-				// , function(){}        //success, do nothing for now
-				// , function(response){ //error
-					// var result = response;
-				 // }
-				// );
+	
 	$scope.tasks = Task.query();
-	
-	var num = 5;
-	
 
 	$scope.destroy = function(Task) {
 		Task.destroy(function() {
@@ -69,7 +58,6 @@ categoryController = function($scope, $location, Category, UserService) {
 		return;
 	}
 	var cats = Category.query(function(data){
-	//var cats = Category.getUserCategories ({id: $scope.user.userId}, function(){
 		var catData=[];
 		flatArrToNestedArr(cats, catData);
 		$scope.categories = catData;
@@ -230,8 +218,8 @@ userLoginCtrl = function ($scope, User, $location, UserService){
 		User.remove(UserService.UserId);
 		
 	 }
+	 
 	$scope.user = {};
-	
 	
 	$scope.login = function ()	{
 		 $scope.user.Password = CryptoJS.MD5($scope.user.Password).toString();
@@ -246,16 +234,13 @@ userLoginCtrl = function ($scope, User, $location, UserService){
 
 var TaskMngApi = angular.module('TaskManagementApi', ['ngResource'])
 TaskMngApi.factory('Task', function($resource) {
-	var Task = $resource('http://localhost/task-management1/index.php/api/tasks/:method/:id', {}, {
+	var Task = $resource('http://localhost/task-management/index.php/api/tasks/:method/:id', {}, {
 		query: {method:'GET', params: {method:'index'}, isArray:true },
 		save: {method:'POST', params: {method:'save'} },
 		get: {method:'GET', params: {method:'edit'} },
 		remove: {method:'DELETE', params: {method:'remove'} },
 		tasksInCategory: {method:'GET', params: {method:'tasksInCategory'} },
-		getUserTasks: {method:'GET', params: {method:'userTasks'} },
-		//userTask:{method:'GET', params: {method:'userTask'}}
-		
-		
+		getUserTasks: {method:'GET', params: {method:'userTasks'} }
 	});
 
 	Task.prototype.update = function(cb) {
@@ -272,14 +257,12 @@ TaskMngApi.factory('Task', function($resource) {
 
 
 TaskMngApi.factory('Category', function($resource) {
-	var Category = $resource('http://localhost/task-management1/index.php/api/categories/:method/:id', {}, {
+	var Category = $resource('http://localhost/task-management/index.php/api/categories/:method/:id', {}, {
 		query: {method:'GET', params: {method:'index'}, isArray:true },
 		save: {method:'POST', params: {method:'save'} },
 		get: {method:'GET', params: {method:'edit'} },
-		remove: {method:'DELETE', params: {method:'remove'} },
-		getUserCategories: {method:'GET', params: {method:'userCategories'} }
+		remove: {method:'DELETE', params: {method:'remove'} }
 	});
-
 	Category.prototype.update = function(cb) {
 		return Category.save({id: this.CategoryId},
 			angular.extend({}, this, {CategoryId:undefined}, cb))
@@ -293,12 +276,11 @@ TaskMngApi.factory('Category', function($resource) {
 });
 
 TaskMngApi.factory('User', function($resource) {
-	var User = $resource('http://localhost/task-management1/index.php/api/membership/:method/:id', {}, {
+	var User = $resource('http://localhost/task-management/index.php/api/membership/:method/:id', {}, {
 		query: {method:'GET', params: {method:'index'}, isArray:true },
 		save: {method:'POST', params: {method:'save'} },
 		get: {method:'GET', params: {method:'edit'} },
 		remove: {method:'DELETE', params: {method:'remove'} },
-		//checkUname: {method:'POST', params: {method:'checkDupUname'} }
 		loginUser: {method:'Post', params: {method:'login'} }
 	});
 
@@ -324,24 +306,6 @@ TaskManagementApp.factory('UserService', function() {
 	return sdo;
 });
 
-TaskManagementApp.directive('checkUser', ['$rootScope', '$location', 'UserService', function ($root, $location, userSrv) {
-	return {
-		link: function (scope, elem, attrs, ctrl) {
-			$root.$on('$routeChangeStart', function(event, currRoute, prevRoute){
-				if (!prevRoute.access.isFree && !userSrv.isLogged) {
-					// reload the login route
-				}
-				/*
-				* IMPORTANT:
-				* It's not difficult to fool the previous control,
-				* so it's really IMPORTANT to repeat the control also in the backend,
-				* before sending back from the server reserved information.
-				*/
-			});
-		}
-	}
-}]);
-
 
 TaskManagementApp.directive('ngEnter', function() {
 	return function(scope, element, attrs) {
@@ -364,7 +328,6 @@ TaskManagementApp.directive('pwCheck', function () {
 			var firstPassword = '#' + attrs.pwCheck;
 			elem.add(firstPassword).on('keyup', function () {
 				scope.$apply(function () {
-					// console.info(elem.val() === $(firstPassword).val());
 					ctrl.$setValidity('pwMatch', elem.val() === $(firstPassword).val());
 				});
 			});

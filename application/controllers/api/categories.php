@@ -18,8 +18,6 @@ class Categories extends REST_Controller {
 	public function index_get()
 	{
 		$categories = $this->category_model->get_all();
-		
-		//FB::info("inside add method in category controller index-get and categories are:".$categories);
 		$this->response($categories);
 	}
 
