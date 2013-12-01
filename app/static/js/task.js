@@ -88,7 +88,7 @@ categoryController = function($scope, $location, Category, UserService) {
 		if(cat.isDelivering == true)
 		{
 			cat.isDelivering = false;
-			$scope.noMoreDelivery = false;
+			//$scope.noMoreDelivery = false;
 		}
 
 		if(cat.isExpanded === undefined )
@@ -103,11 +103,12 @@ categoryController = function($scope, $location, Category, UserService) {
 	
 	$scope.add = function(category)
 	{
-		if($scope.noMoreDelivery)
+		if($scope.isDelivering)
+		//if($scope.noMoreDelivery)
 			return;
 		$scope.newCat = {ParentId: category.cat.CategoryId, CategoryTitle:""}
 		category.isDelivering = true;
-		$scope.noMoreDelivery = true;
+		//$scope.noMoreDelivery = true;
 	}
 
 	$scope.select = function(category)
@@ -125,7 +126,7 @@ categoryController = function($scope, $location, Category, UserService) {
 	$scope.cancel= function(category)
 	{
 		category.isDelivering = false;
-		$scope.noMoreDelivery = false;
+		//$scope.noMoreDelivery = false;
 	}
 	
 	$scope.save = function (cat)
@@ -155,7 +156,7 @@ newTaskCtrl = function ($scope, Task, $location, UserService ){
 	$scope.task = {	TaskTitle:"", DueDate:"", Notes:"", UserId:""}
 	$scope.save = function ()
 	{
-		$scope.task.DueDate = new Date();
+		//$scope.task.DueDate = new Date();
 		$scope.task.UserId = $scope.user.UserId;
 		Task.save($scope.task, function (){
 			// Redirect after saving task
@@ -319,6 +320,26 @@ TaskManagementApp.directive('ngEnter', function() {
 			}
 		});
 	};
+});
+
+TaskManagementApp.directive('datepicker', function() {
+	return {
+	  restrict: 'A',
+	  require : 'ngModel',
+	  link : function (scope, element, attrs, ngModelCtrl) {
+		$(function(){
+		  element.datepicker({
+		    dateFormat:'dd/mm/yy',
+			onSelect:function (date) {
+				var dateObj = element.datepicker('getDate');
+			    scope.$apply(function () {
+			    ngModelCtrl.$setViewValue(dateObj);
+			  });
+			}
+		  });
+	    });
+	  }
+	}
 });
 
 TaskManagementApp.directive('pwCheck', function () {
